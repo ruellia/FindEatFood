@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FindEatFood</string>
+    <string name="diet_type">Diet Type</string>
+    <string name="find_recipes">Find Recipes</string>
+    <string name="disliked_ingredient">Disliked Ingredient</string>
+    <string name="allergies">Allergies</string>
+    <string name="kale">Kale</string>
+    <string name="nuts">Nuts</string>
+    <string name="vegan">Vegan</string>
 </resources>
