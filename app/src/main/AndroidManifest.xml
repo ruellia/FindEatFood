@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".IngredientActivity"></activity>
         <activity android:name=".DietaryActivity" />
+        <activity android:name=".ResultsActivity" />
+        <activity android:name=".FavoritesActivity" />
     </application>
 
 </manifest>

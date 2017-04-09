@@ -62,6 +62,7 @@
         android:id="@+id/findRecipeB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/find_recipes" />
+        android:text="@string/find_recipes"
+        android:onClick="showResults"/>
 
 </LinearLayout>
