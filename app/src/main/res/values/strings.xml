@@ -9,6 +9,13 @@
     <string name="vegan">Vegan</string>
     <string name="title_activity_main">MainActivity</string>
 
+    // Ingredient Activity
+    <string name="your_ingredients">Your Ingredients</string>
+    <string name="add">Add</string>
+    <string name="add_ingredient">Add Ingredient</string>
+    <string name="dietary_restrictions">Dietary Restrictions</string>
+    <string name="error_ingredient">Must add an ingredient!</string>
+
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
