@@ -16,9 +16,11 @@
     <string name="dietary_restrictions">Dietary Restrictions</string>
     <string name="error_ingredient">Must add an ingredient!</string>
 
+
     <string name="find_food_deals">Find Food Deals</string>
     <string name="favorites">Favorites</string>
     <string name="about">About</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

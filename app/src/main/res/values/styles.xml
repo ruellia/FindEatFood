@@ -5,6 +5,9 @@
 
         <item name="android:logo">@android:color/transparent</item>
         <!-- Customize your theme here. -->
+        <item name="android:icon">@android:color/transparent</item>
+
+
     </style>
 
 </resources>
