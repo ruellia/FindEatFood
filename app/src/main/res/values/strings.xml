@@ -16,8 +16,8 @@
     <string name="dietary_restrictions">Dietary Restrictions</string>
     <string name="error_ingredient">Must add an ingredient!</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Find Recipes</string>
+    <string name="title_section1">Find Recipes</string>
+    <string name="title_section2">Find Food Deals</string>
     <string name="title_section3">Favorites</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
