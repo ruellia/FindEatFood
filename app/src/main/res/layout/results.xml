@@ -20,5 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/edit"
-        android:id="@+id/EditButton" />
+        android:id="@+id/EditButton"
+        android:onClick="onClickEdit"/>
 </LinearLayout>
