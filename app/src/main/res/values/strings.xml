@@ -17,13 +17,17 @@
     <string name="error_ingredient">Must add an ingredient!</string>
 
 
-    <string name="find_food_deals">Find Food Deals</string>
-    <string name="favorites">Favorites</string>
-    <string name="about">About</string>
+    <string-array name="titles">
+        <item>Home</item>
+        <item>Find Recipes</item>
+        <item>Find Food Deals</item>
+        <item>About</item>
+        <item>Favorites</item>
+    </string-array>
 
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="open_drawer">Open navigation drawer</string>
+    <string name="close_drawer">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
 
@@ -32,4 +36,7 @@
     <string name="see_more">See More</string>
 
     <string name="edit">Edit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

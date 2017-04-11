@@ -6,32 +6,19 @@
     android:layout_height="match_parent"
     tools:context="edu.mills.findeatfood.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="-16dp"
-       />
-
-
-
-    <!-- As the main content view, the view below consumes the entire
-         space available using match_parent in both dimensions. -->
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <!-- The drawer is given a fixed width in dp and extends the full height of
-         the container. -->
-    <fragment
-        android:id="@+id/navigation_drawer"
-        android:name="edu.mills.findeatfood.NavigationDrawerFragment"
-        android:layout_width="@dimen/navigation_drawer_width"
+    <ListView android:id="@+id/drawer"
+        android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        tools:layout="@layout/drawer_main" />
-
-
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="#ffffff"/>
 
 </android.support.v4.widget.DrawerLayout>
+
+
