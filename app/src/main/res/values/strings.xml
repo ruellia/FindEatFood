@@ -2,14 +2,10 @@
     <string name="app_name">FindEatFood</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="dietary_restrictions">Dietary Restrictions</string>
-
-    // Ingredient Activity
     <string name="your_ingredients">Your Ingredients</string>
     <string name="add">Add</string>
     <string name="add_ingredient">Add Ingredient</string>
     <string name="error_ingredient">Must add an ingredient!</string>
-
-
 
     <string-array name="dietaryOptions">
         <item>Vegan</item>
@@ -22,7 +18,7 @@
 
     <string-array name="titles">
         <item>Home</item>
-        <item>Dietary Restrcitions</item>
+        <item>Dietary Restrictions</item>
         <item>Recipe Detail</item>
         <item>Top Level</item>
     </string-array>
@@ -39,7 +35,6 @@
 
     <string name="edit">Edit</string>
 
-    //RecipeDetailFragment
     <string name="recipe_detail">Recipe Detail</string>
     <string name="recipe_detail_information">To test that the scroll works with a burrito recipe.\n
         Ingredients\n
@@ -60,6 +55,4 @@
         To use, remove foil; place paper towel-wrapped burrito on a microwave-safe plate.
         \nMicrowave on high 3-4 minutes or until heated through, turning once. \nLet stand 20 seconds. \nYield: \n6 servings.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
