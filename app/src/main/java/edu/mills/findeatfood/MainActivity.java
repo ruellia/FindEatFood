@@ -175,7 +175,7 @@ public class MainActivity extends Activity {
         }else{
             title = titles[position];
         }
-        getActionBar().setTitle(title);
+        getActionBar().setTitle("  " +title);
     }
 
     @Override

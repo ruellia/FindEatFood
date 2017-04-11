@@ -15,3 +15,4 @@ public class TopFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_top, container, false);
     }
 }
+
