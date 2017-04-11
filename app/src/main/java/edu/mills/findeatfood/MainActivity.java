@@ -72,15 +72,15 @@ public class MainActivity extends Activity {
             if (fragment instanceof TopFragment) {
                 currentPosition = 0;
             }
-            if (fragment instanceof RecipeDetailFragment) {
+            if (fragment instanceof DietaryFragment) {
                 currentPosition = 1;
             }
-            /*if (fragment instanceof PastaFragment) {
+            if (fragment instanceof RecipeDetailFragment) {
                 currentPosition = 2;
             }
-            if (fragment instanceof StoresFragment) {
+            if (fragment instanceof TopFragment) {
                 currentPosition = 3;
-            }*/
+            }
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
 
@@ -119,14 +119,14 @@ public class MainActivity extends Activity {
         currentPosition = position;
         switch(position){
             case 1:
+                fragment = new DietaryFragment();
+                break;
+            case 2:
                 fragment = new RecipeDetailFragment();
                 break;
-            /*case 2:
-                fragment = new PastaFragment();
-                break;
             case 3:
-                fragment = new StoresFragment();
-                break;*/
+                fragment = new TopFragment();
+                break;
             default:
                 fragment = new TopFragment();
         }

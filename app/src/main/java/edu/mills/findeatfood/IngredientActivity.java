@@ -82,7 +82,7 @@ public class IngredientActivity extends Activity {
                 if (addIngredientET1.equals("")) {
                     addIngredientET1.setError(getText(R.string.error_ingredient));
                 } else {
-                    Intent intent = new Intent(IngredientActivity.this, DietaryActivity.class);
+                    Intent intent = new Intent(IngredientActivity.this, DietaryFragment.class);
                     startActivity(intent);
                 }
             }

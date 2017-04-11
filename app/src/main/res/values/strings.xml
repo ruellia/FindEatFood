@@ -1,12 +1,5 @@
 <resources>
     <string name="app_name">FindEatFood</string>
-    <string name="diet_type">Diet Type</string>
-    <string name="find_recipes">Find Recipes</string>
-    <string name="disliked_ingredient">Disliked Ingredient</string>
-    <string name="allergies">Allergies</string>
-    <string name="kale">Kale</string>
-    <string name="nuts">Nuts</string>
-    <string name="vegan">Vegan</string>
     <string name="title_activity_main">MainActivity</string>
 
     // Ingredient Activity
@@ -16,10 +9,18 @@
     <string name="dietary_restrictions">Dietary Restrictions</string>
     <string name="error_ingredient">Must add an ingredient!</string>
 
+    <string-array name="dietaryOptions">
+        <item>Vegan</item>
+        <item>Pescatarian</item>
+        <item>No Nuts</item>
+        <item>Lactose Intolerant</item>
+        <item>No Gluten</item>
+    </string-array>
+
 
     <string-array name="titles">
         <item>Home</item>
-        <item>Find Recipes</item>
+        <item>Dietary Restrcitions</item>
         <item>Find Food Deals</item>
         <item>About</item>
         <item>Favorites</item>
