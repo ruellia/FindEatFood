@@ -17,9 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
-import android.widget.Toast;
 
-import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -30,13 +28,15 @@ public class MainActivity extends Activity {
     private ActionBarDrawerToggle drawerToggle;
     private int currentPosition = 0;
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener{
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //call when item in the drawer is clicked
             selectItem(position);
         }
-    };
+    }
+
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
         if (savedInstanceState != null) {
             currentPosition = savedInstanceState.getInt("position");
             setActionBarTitle(currentPosition);
-        }else{
+        } else {
             selectItem(0);
         }
         drawerToggle = new DrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer);
@@ -64,9 +64,9 @@ public class MainActivity extends Activity {
     }
 
 
-    private class FragManager implements FragmentManager.OnBackStackChangedListener{
+    private class FragManager implements FragmentManager.OnBackStackChangedListener {
 
-        public void onBackStackChanged(){
+        public void onBackStackChanged() {
             FragmentManager fragMan = getFragmentManager();
             Fragment fragment = fragMan.findFragmentByTag("visible_fragment");
             if (fragment instanceof TopFragment) {
@@ -111,12 +111,10 @@ public class MainActivity extends Activity {
     }
 
 
-    private void selectItem(int position){
+    private void selectItem(int position) {
         Fragment fragment;
         currentPosition = position;
-        switch(position){
-            case 0:
-                fragment = new TopFragment();
+        switch (position) {
             case 1:
                 fragment = new DietaryFragment();
                 break;
@@ -164,14 +162,14 @@ public class MainActivity extends Activity {
         outState.putInt("position", currentPosition);
     }
 
-    private void setActionBarTitle(int position){
+    private void setActionBarTitle(int position) {
         String title;
-        if(position == 0){
+        if (position == 0) {
             title = getResources().getString(R.string.app_name);
-        }else{
+        } else {
             title = titles[position];
         }
-        getActionBar().setTitle("  " +title);
+        getActionBar().setTitle("  " + title);
     }
 
     @Override
@@ -193,7 +191,7 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(drawerToggle.onOptionsItemSelected(item)){
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         switch (item.getItemId()) {
