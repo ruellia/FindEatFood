@@ -203,8 +203,8 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_create_order:
                 //Code to run when the Create Order item is clicked
-                Intent intent = new Intent(this, OrderActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(this, OrderActivity.class);
+                //startActivity(intent);
                 return true;
             case R.id.action_settings:
                 //Code to run when the settings item is clicked
