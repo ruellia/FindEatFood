@@ -21,9 +21,8 @@
     <string-array name="titles">
         <item>Home</item>
         <item>Dietary Restrcitions</item>
-        <item>Find Food Deals</item>
-        <item>About</item>
-        <item>Favorites</item>
+        <item>Recipe Detail</item>
+        <item>Top Level</item>
     </string-array>
 
 
