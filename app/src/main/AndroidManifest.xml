@@ -19,7 +19,6 @@
         <activity android:name=".IngredientActivity" />
         <activity android:name=".ResultsActivity" />
         <activity android:name=".FavoritesActivity" />
-        <activity android:name=".OrderActivity"></activity>
     </application>
 
 </manifest>
