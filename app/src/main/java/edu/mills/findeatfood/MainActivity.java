@@ -12,7 +12,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -69,7 +68,7 @@ public class MainActivity extends Activity {
         public void onBackStackChanged() {
             FragmentManager fragMan = getFragmentManager();
             Fragment fragment = fragMan.findFragmentByTag("visible_fragment");
-            if (fragment instanceof TopFragment) {
+            if (fragment instanceof HomeFragment) {
                 currentPosition = 0;
             }
             if (fragment instanceof DietaryFragment) {
@@ -122,7 +121,7 @@ public class MainActivity extends Activity {
                 fragment = new RecipeDetailFragment();
                 break;
             default:
-                fragment = new TopFragment();
+                fragment = new HomeFragment();
         }
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragment, "visible_fragment");
