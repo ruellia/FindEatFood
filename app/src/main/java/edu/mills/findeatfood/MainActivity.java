@@ -17,9 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
-import android.widget.Toast;
 
-import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -30,13 +28,15 @@ public class MainActivity extends Activity {
     private ActionBarDrawerToggle drawerToggle;
     private int currentPosition = 0;
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener{
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //call when item in the drawer is clicked
             selectItem(position);
         }
-    };
+    }
+
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
         if (savedInstanceState != null) {
             currentPosition = savedInstanceState.getInt("position");
             setActionBarTitle(currentPosition);
-        }else{
+        } else {
             selectItem(0);
         }
         drawerToggle = new DrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer);
@@ -64,23 +64,20 @@ public class MainActivity extends Activity {
     }
 
 
-    private class FragManager implements FragmentManager.OnBackStackChangedListener{
+    private class FragManager implements FragmentManager.OnBackStackChangedListener {
 
-        public void onBackStackChanged(){
+        public void onBackStackChanged() {
             FragmentManager fragMan = getFragmentManager();
             Fragment fragment = fragMan.findFragmentByTag("visible_fragment");
             if (fragment instanceof TopFragment) {
                 currentPosition = 0;
             }
-            if (fragment instanceof RecipeDetailFragment) {
+            if (fragment instanceof DietaryFragment) {
                 currentPosition = 1;
             }
-            /*if (fragment instanceof PastaFragment) {
+            if (fragment instanceof RecipeDetailFragment) {
                 currentPosition = 2;
             }
-            if (fragment instanceof StoresFragment) {
-                currentPosition = 3;
-            }*/
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
 
@@ -114,19 +111,16 @@ public class MainActivity extends Activity {
     }
 
 
-    private void selectItem(int position){
+    private void selectItem(int position) {
         Fragment fragment;
         currentPosition = position;
-        switch(position){
+        switch (position) {
             case 1:
+                fragment = new DietaryFragment();
+                break;
+            case 2:
                 fragment = new RecipeDetailFragment();
                 break;
-            /*case 2:
-                fragment = new PastaFragment();
-                break;
-            case 3:
-                fragment = new StoresFragment();
-                break;*/
             default:
                 fragment = new TopFragment();
         }
@@ -168,14 +162,14 @@ public class MainActivity extends Activity {
         outState.putInt("position", currentPosition);
     }
 
-    private void setActionBarTitle(int position){
+    private void setActionBarTitle(int position) {
         String title;
-        if(position == 0){
+        if (position == 0) {
             title = getResources().getString(R.string.app_name);
-        }else{
+        } else {
             title = titles[position];
         }
-        getActionBar().setTitle("  " +title);
+        getActionBar().setTitle("  " + title);
     }
 
     @Override
@@ -197,14 +191,14 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(drawerToggle.onOptionsItemSelected(item)){
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         switch (item.getItemId()) {
             case R.id.action_create_order:
                 //Code to run when the Create Order item is clicked
-                Intent intent = new Intent(this, OrderActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(this, OrderActivity.class);
+                //startActivity(intent);
                 return true;
             case R.id.action_settings:
                 //Code to run when the settings item is clicked
