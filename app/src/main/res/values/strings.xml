@@ -17,6 +17,7 @@
     <string name="error_ingredient">Must add an ingredient!</string>
 
 
+    // Navdrawer items
     <string-array name="titles">
         <item>Home</item>
         <item>Find Recipes</item>
