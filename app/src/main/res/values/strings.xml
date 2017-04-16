@@ -21,6 +21,7 @@
         <item>Dietary Restrictions</item>
         <item>Recipe Detail</item>
         <item>Favorites</item>
+        <item>Find Deals</item>
     </string-array>
 
     <string name="open_drawer">Open navigation drawer</string>

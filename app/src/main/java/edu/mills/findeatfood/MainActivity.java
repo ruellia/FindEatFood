@@ -17,7 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements FindDealsFragment.StoreListListener{
 
     private ShareActionProvider shareActionProvider;
     private String[] titles;
@@ -76,6 +76,9 @@ public class MainActivity extends Activity {
             if (fragment instanceof FavoritesFragment) {
                 currentPosition = 3;
             }
+            if (fragment instanceof FindDealsFragment) {
+                currentPosition = 4;
+            }
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
 
@@ -119,6 +122,9 @@ public class MainActivity extends Activity {
                 break;
             case 3:
                 fragment = new FavoritesFragment();
+                break;
+            case 4:
+                fragment = new FindDealsFragment();
                 break;
             default:
                 fragment = new HomeFragment();
@@ -222,6 +228,15 @@ public class MainActivity extends Activity {
         HomeFragment homeFrag = new HomeFragment();
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
         fragTransaction.replace(R.id.content_frame, homeFrag);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.commit();
+    }
+
+    @Override
+    public void storeClicked(long id) {
+        FindDealsByStoreFragment storeDealsFrag = new FindDealsByStoreFragment();
+        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
+        fragTransaction.replace(R.id.content_frame, storeDealsFrag);
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
