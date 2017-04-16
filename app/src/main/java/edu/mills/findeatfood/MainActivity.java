@@ -17,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 
-
 public class MainActivity extends Activity {
 
     private ShareActionProvider shareActionProvider;
@@ -34,8 +33,6 @@ public class MainActivity extends Activity {
             selectItem(position);
         }
     }
-
-    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +59,6 @@ public class MainActivity extends Activity {
         getFragmentManager().addOnBackStackChangedListener(new FragManager());
     }
 
-
     private class FragManager implements FragmentManager.OnBackStackChangedListener {
 
         public void onBackStackChanged() {
@@ -85,7 +81,6 @@ public class MainActivity extends Activity {
 
         }
     }
-
 
     private class DrawerToggle extends ActionBarDrawerToggle {
 
@@ -111,7 +106,6 @@ public class MainActivity extends Activity {
             invalidateOptionsMenu();
         }
     }
-
 
     private void selectItem(int position) {
         Fragment fragment;
