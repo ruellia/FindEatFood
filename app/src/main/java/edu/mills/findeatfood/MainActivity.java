@@ -17,7 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 
-public class MainActivity extends Activity implements FindDealsFragment.StoreListListener{
+public class MainActivity extends Activity
+        implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener {
 
     private ShareActionProvider shareActionProvider;
     private String[] titles;
@@ -237,6 +238,15 @@ public class MainActivity extends Activity implements FindDealsFragment.StoreLis
         FindDealsByStoreFragment storeDealsFrag = new FindDealsByStoreFragment();
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
         fragTransaction.replace(R.id.content_frame, storeDealsFrag);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.commit();
+    }
+
+    @Override
+    public void resultClicked(long id) {
+        RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
+        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
+        fragTransaction.replace(R.id.content_frame, detailsFrag);
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
