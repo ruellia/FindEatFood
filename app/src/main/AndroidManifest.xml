@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".IngredientActivity" />
-        <activity android:name=".ResultsActivity" />
         <activity android:name=".FavoritesActivity" />
     </application>
 

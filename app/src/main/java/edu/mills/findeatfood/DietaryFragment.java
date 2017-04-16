@@ -2,6 +2,7 @@ package edu.mills.findeatfood;
 
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,4 @@ public class DietaryFragment extends Fragment {
         }
         return view;
     }
-
-
 }

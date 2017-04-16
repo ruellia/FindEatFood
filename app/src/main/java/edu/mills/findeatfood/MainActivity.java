@@ -77,6 +77,9 @@ public class MainActivity extends Activity {
             if (fragment instanceof RecipeDetailFragment) {
                 currentPosition = 2;
             }
+            if (fragment instanceof FavoritesFragment) {
+                currentPosition = 3;
+            }
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
 
@@ -119,6 +122,9 @@ public class MainActivity extends Activity {
                 break;
             case 2:
                 fragment = new RecipeDetailFragment();
+                break;
+            case 3:
+                fragment = new FavoritesFragment();
                 break;
             default:
                 fragment = new HomeFragment();
@@ -206,5 +212,23 @@ public class MainActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
         return true;
+    }
+
+    public void onClickDietary(View v) {
+        ResultsFragment resultsFrag = new ResultsFragment();
+        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
+        fragTransaction.replace(R.id.content_frame, resultsFrag );
+        fragTransaction.addToBackStack(null);
+        fragTransaction.commit();
+    }
+
+    public void onClickEdit(View v) {
+        // call ingredient frag when that's finished
+        // for now, go back to home frag
+        HomeFragment homeFrag = new HomeFragment();
+        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
+        fragTransaction.replace(R.id.content_frame, homeFrag);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.commit();
     }
 }
