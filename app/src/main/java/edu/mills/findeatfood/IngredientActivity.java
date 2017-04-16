@@ -21,7 +21,6 @@ public class IngredientActivity extends Activity {
         final Button addIngredientB4 = (Button) findViewById(R.id.addIngredientB4);
         final Button dietaryActivityB = (Button) findViewById(R.id.dietaryActivityB);
 
-
         final EditText addIngredientET1 = (EditText) findViewById(R.id.addIngredientET1);
         final EditText addIngredientET2 = (EditText) findViewById(R.id.addIngredientET2);
         final EditText addIngredientET3 = (EditText) findViewById(R.id.addIngredientET3);

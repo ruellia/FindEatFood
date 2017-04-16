@@ -1,16 +1,12 @@
 package edu.mills.findeatfood;
 
-
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 
 public class DietaryFragment extends Fragment {
 
@@ -27,7 +23,7 @@ public class DietaryFragment extends Fragment {
                 getResources().getStringArray(R.array.dietaryOptions);
         LinearLayout dietaryOptionsLayout =
                 (LinearLayout) view.findViewById(R.id.dietaryOptionsLayout);
-        for(int i = 0; i < dietaryOptions.length; i++){
+        for (int i = 0; i < dietaryOptions.length; i++) {
             CheckBox checkBox = new CheckBox(this.getActivity());
             checkBox.setText(dietaryOptions[i]);
             dietaryOptionsLayout.addView(checkBox);

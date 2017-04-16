@@ -15,15 +15,13 @@
         <item>No Gluten</item>
     </string-array>
 
-
-    // Navdrawer items
+    <!-- Navdrawer items -->
     <string-array name="titles">
         <item>Home</item>
         <item>Dietary Restrictions</item>
         <item>Recipe Detail</item>
         <item>Favorites</item>
     </string-array>
-
 
     <string name="open_drawer">Open navigation drawer</string>
     <string name="close_drawer">Close navigation drawer</string>

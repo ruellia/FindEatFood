@@ -217,7 +217,7 @@ public class MainActivity extends Activity {
     public void onClickDietary(View v) {
         ResultsFragment resultsFrag = new ResultsFragment();
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, resultsFrag );
+        fragTransaction.replace(R.id.content_frame, resultsFrag);
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }

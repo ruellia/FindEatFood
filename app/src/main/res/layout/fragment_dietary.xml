@@ -24,8 +24,8 @@
             android:id="@+id/dietaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/find_recipes"
-            android:onClick="onClickDietary"/>
+            android:onClick="onClickDietary"
+            android:text="@string/find_recipes" />
 
     </LinearLayout>
 
