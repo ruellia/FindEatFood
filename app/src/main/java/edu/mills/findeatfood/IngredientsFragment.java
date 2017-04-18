@@ -13,7 +13,7 @@ public class IngredientActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ingredient);
+        setContentView(R.layout.fragment_ingredients);
 
         final Button addIngredientB1 = (Button) findViewById(R.id.addIngredientB1);
         final Button addIngredientB2 = (Button) findViewById(R.id.addIngredientB2);
