@@ -2,9 +2,12 @@
     <string name="app_name">FindEatFood</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="dietary_restrictions">Dietary Restrictions</string>
+
+    // Ingredient Activity
     <string name="your_ingredients">Your Ingredients</string>
     <string name="add">Add</string>
     <string name="add_ingredient">Add Ingredient</string>
+    <string name="next_button">Next</string>
     <string name="error_ingredient">Must add an ingredient!</string>
 
     <string-array name="dietaryOptions">

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context="edu.mills.findeatfood.IngredientActivity">
+    tools:context="edu.mills.findeatfood.IngredientsFragment">
 
     <TextView
         android:layout_width="match_parent"
@@ -19,123 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
-    <LinearLayout
-        android:id="@+id/row_1"
+    <EditText
+        android:id="@+id/addIngredientET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/addIngredientET1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".8"
-            android:hint="@string/add_ingredient" />
-
-        <Space
-            android:layout_width="2dp"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:id="@+id/addIngredientB1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <EditText
-            android:id="@+id/addIngredientET2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".8"
-            android:hint="@string/add_ingredient" />
-
-        <Space
-            android:layout_width="2dp"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:id="@+id/addIngredientB2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <EditText
-            android:id="@+id/addIngredientET3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".8"
-            android:hint="@string/add_ingredient" />
-
-        <Space
-            android:layout_width="2dp"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:id="@+id/addIngredientB3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row_4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <EditText
-            android:id="@+id/addIngredientET4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".8"
-            android:hint="@string/add_ingredient" />
-
-        <Space
-            android:layout_width="2dp"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:id="@+id/addIngredientB4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row_5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <EditText
-            android:id="@+id/addIngredientET5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".8"
-            android:hint="@string/add_ingredient" />
-    </LinearLayout>
+        android:hint="@string/add_ingredient" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center|bottom"
         android:orientation="vertical">
@@ -144,7 +36,7 @@
             android:id="@+id/dietaryActivityB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dietary_restrictions" />
+            android:text="@string/next_button" />
     </LinearLayout>
 
 </LinearLayout>
