@@ -20,22 +20,6 @@ public class IngredientsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ingredients, container, false);
-
-        Button dietaryActivityB = (Button) getView().findViewById(R.id.dietaryActivityB);
-
-        dietaryActivityB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText addIngredientET = (EditText) getView().findViewById(R.id.addIngredientET);
-
-                if (addIngredientET.getText().toString().equals("")) {
-                    Toast.makeText(getActivity().getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
-                }
-
-                Intent intent = new Intent(getActivity().getApplicationContext(), DietaryFragment.class);
-                startActivity(intent);
-            }
-        });
         return view;
     }
 }

@@ -68,17 +68,14 @@ public class MainActivity extends Activity
             if (fragment instanceof HomeFragment) {
                 currentPosition = 0;
             }
-            if (fragment instanceof DietaryFragment) {
+            if (fragment instanceof IngredientsFragment) {
                 currentPosition = 1;
             }
-            if (fragment instanceof RecipeDetailFragment) {
+            if (fragment instanceof FindDealsFragment) {
                 currentPosition = 2;
             }
             if (fragment instanceof FavoritesFragment) {
                 currentPosition = 3;
-            }
-            if (fragment instanceof FindDealsFragment) {
-                currentPosition = 4;
             }
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
@@ -116,16 +113,13 @@ public class MainActivity extends Activity
         currentPosition = position;
         switch (position) {
             case 1:
-                fragment = new DietaryFragment();
+                fragment = new IngredientsFragment();
                 break;
             case 2:
-                fragment = new RecipeDetailFragment();
+                fragment = new FindDealsFragment();
                 break;
             case 3:
                 fragment = new FavoritesFragment();
-                break;
-            case 4:
-                fragment = new FindDealsFragment();
                 break;
             default:
                 fragment = new HomeFragment();
@@ -224,13 +218,25 @@ public class MainActivity extends Activity
     }
 
     public void onClickEdit(View v) {
-        // call ingredient frag when that's finished
-        // for now, go back to home frag
-        HomeFragment homeFrag = new HomeFragment();
+        IngredientsFragment ingredientsFrag = new IngredientsFragment();
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, homeFrag);
+        fragTransaction.replace(R.id.content_frame, ingredientsFrag);
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
+    }
+
+    public void onClickToDietary(View v) {
+        DietaryFragment dietaryFrag = new DietaryFragment();
+        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
+        fragTransaction.replace(R.id.content_frame, dietaryFrag);
+        fragTransaction.addToBackStack(null);
+        fragTransaction.commit();
+
+/*        EditText addIngredientET = (EditText) view.findViewById(R.id.addIngredientET);
+
+        if (addIngredientET.getText().toString().equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
+        }*/
     }
 
     @Override
