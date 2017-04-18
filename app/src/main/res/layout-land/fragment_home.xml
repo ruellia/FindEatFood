@@ -10,5 +10,4 @@
         android:background="@drawable/ingredients_landscape"
         android:layout_gravity="center"
         />
-
-</FrameLayout>
+    </FrameLayout>
