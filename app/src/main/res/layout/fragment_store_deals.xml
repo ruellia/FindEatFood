@@ -13,10 +13,36 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/recipe_detail_information"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BLAH" />
+            android:text="title" />
+
+        <TextView
+            android:id="@+id/url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="url" />
+
+        <TextView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="image" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="description" />
+
+        <TextView
+            android:id="@+id/publish_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="published time" />
+
+
 
     </LinearLayout>
 
