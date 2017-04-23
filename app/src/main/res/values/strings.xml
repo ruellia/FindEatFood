@@ -4,7 +4,7 @@
     <string name="dietary_restrictions">Dietary Restrictions</string>
 
     // Ingredient Activity
-    <string name="your_ingredients">Your Ingredients</string>
+    <string name="your_ingredients">To search for recipes, enter ingredients here.</string>
     <string name="add">Add</string>
     <string name="add_ingredient">Add Ingredient</string>
     <string name="next_button">Next</string>

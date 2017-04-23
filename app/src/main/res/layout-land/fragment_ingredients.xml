@@ -6,34 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="#000000"
     tools:context="edu.mills.findeatfood.IngredientsFragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/cutting_board_port"
+        android:background="@drawable/cutting_board_land"
         android:layout_gravity="center"
         />
 
-    <TextView
+    <TextView style="@style/inputTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="center"
         android:text="@string/your_ingredients"
         android:textSize="30sp"
-        android:paddingLeft="20dp"
+        android:textAllCaps="true"
         android:textStyle="bold"
-        android:paddingTop="30dp"
-        android:textColor="#45360A"
-        />
+        android:paddingTop="20dp"/>
 
-    <EditText style="@style/inputTextStyle"
+    <EditText
         android:id="@+id/addIngredientET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/add_ingredient"
-                />
+        android:layout_marginTop="100dp" />
 
 
     <RelativeLayout
@@ -47,7 +44,8 @@
             android:layout_height="50dp"
             android:text="@string/next_button"
             android:onClick="onClickToDietary"
-            ></Button>
+            >
+        </Button>
     </RelativeLayout>
 
 </RelativeLayout>

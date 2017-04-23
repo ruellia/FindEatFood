@@ -4,8 +4,25 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:logo">@android:color/transparent</item>
 
+        <item name="android:typeface">sans</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="buttonStyle" parent="android:Theme">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:background">#88B04B</item>
+    </style>
+
+    <style name="inputTextStyle" parent="android:Theme">
+        <item name="android:layout_marginTop">140dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColorHint">#FFF5DE</item>
+    </style>
+
+
 
 
 </resources>
