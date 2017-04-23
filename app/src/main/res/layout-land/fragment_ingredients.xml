@@ -25,12 +25,13 @@
         android:textStyle="bold"
         android:paddingTop="20dp"/>
 
-    <EditText
+    <EditText style="@style/inputTextStyle"
         android:id="@+id/addIngredientET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/add_ingredient"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="100dp">
+    </EditText>
 
 
     <RelativeLayout
