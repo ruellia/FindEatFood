@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="#FFF5DE"
     tools:context="edu.mills.findeatfood.DietaryFragment">
 
     <ImageView
@@ -16,30 +18,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <TextView style="@style/header_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/dietary_restrictions" />
+            android:text="@string/dietary_restrictions"
+            />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp">
 
         <LinearLayout
             android:id="@+id/dietaryOptionsLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            />
 
             <Button style="@style/buttonStyle"
                 android:id="@+id/dietaryButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:onClick="onClickDietary"
                 android:text="@string/find_recipes"
-                android:layout_alignParentBottom="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
         </RelativeLayout>
 
     </LinearLayout>

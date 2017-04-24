@@ -19,11 +19,8 @@
             android:paddingBottom="16dp"
             android:weightSum="1">
 
-            <TextView
+            <TextView style="@style/header_style"
                 android:id="@+id/recipe_detail"
-                android:layout_width="286dp"
-                android:layout_height="61dp"
-                android:layout_weight="0.69"
                 android:gravity="center"
                 android:text="@string/recipe_detail"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />

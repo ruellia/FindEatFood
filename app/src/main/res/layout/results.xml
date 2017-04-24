@@ -8,20 +8,17 @@
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        />
 
-    <Button
-        android:id="@+id/SeeMoreButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/see_more" />
+        <Button style="@style/buttonStyle2"
+            android:id="@+id/SeeMoreButton"
+            android:text="@string/see_more"
+            />
 
-    <Button
-        android:id="@+id/EditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClickEdit"
-        android:text="@string/edit" />
+        <Button style="@style/buttonStyle2"
+            android:id="@+id/EditButton"
+            android:onClick="onClickEdit"
+            android:text="@string/edit"
+            android:backgroundTint="#E86C2E"/>
 </LinearLayout>

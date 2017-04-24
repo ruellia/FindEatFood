@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="#000000"
+    android:background="#FFF5DE"
     tools:context="edu.mills.findeatfood.IngredientsFragment">
 
     <ImageView
@@ -16,16 +16,8 @@
         android:layout_gravity="center"
         />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
+    <TextView style="@style/header_style"
         android:text="@string/your_ingredients"
-        android:textSize="28sp"
-        android:paddingLeft="20dp"
-        android:textStyle="bold"
-        android:paddingTop="30dp"
-        android:textColor="#45360A"
         />
 
     <EditText style="@style/inputTextStyle"
@@ -36,16 +28,14 @@
         android:layout_marginTop="140dp"
                 />
 
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp">
 
         <Button style="@style/buttonStyle"
             android:id="@+id/dietaryActivityB"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:text="@string/next_button"
             android:onClick="onClickToDietary"
             ></Button>
