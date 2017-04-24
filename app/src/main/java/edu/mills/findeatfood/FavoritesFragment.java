@@ -34,7 +34,7 @@ public class FavoritesFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (listener != null) {
-            listener.resultClicked(id);
+            listener.onRecipeClicked(id);
         }
     }
 }

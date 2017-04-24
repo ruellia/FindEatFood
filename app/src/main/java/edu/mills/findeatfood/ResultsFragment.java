@@ -12,7 +12,7 @@ import android.widget.ListView;
 public class ResultsFragment extends ListFragment {
 
     static interface ResultsListListener {
-        void resultClicked(long id);
+        void onRecipeClicked(long id);
     };
     private ResultsListListener listener;
 
@@ -39,7 +39,7 @@ public class ResultsFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (listener != null) {
-            listener.resultClicked(id);
+            listener.onRecipeClicked(id);
         }
     }
 }

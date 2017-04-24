@@ -18,7 +18,7 @@
 
         <Button style="@style/buttonStyle2"
             android:id="@+id/EditButton"
-            android:onClick="onClickEdit"
+            android:onClick="onEditClicked"
             android:text="@string/edit"
             android:backgroundTint="#E86C2E"/>
 </LinearLayout>

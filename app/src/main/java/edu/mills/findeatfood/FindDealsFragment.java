@@ -16,7 +16,7 @@ import android.widget.ListView;
 public class FindDealsFragment extends ListFragment{
 
     static interface StoreListListener {
-        void storeClicked(long id);
+        void onStoreClicked(long id);
     };
     private StoreListListener listener;
 
@@ -41,7 +41,7 @@ public class FindDealsFragment extends ListFragment{
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (listener != null) {
-            listener.storeClicked(id);
+            listener.onStoreClicked(id);
         }
     }
 }

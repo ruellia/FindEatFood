@@ -40,7 +40,7 @@
 
             <Button style="@style/buttonStyle"
                 android:id="@+id/dietaryButton"
-                android:onClick="onClickDietary"
+                android:onClick="onResultsClicked"
                 android:text="@string/find_recipes"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />

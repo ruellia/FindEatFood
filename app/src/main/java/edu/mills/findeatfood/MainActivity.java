@@ -208,28 +208,19 @@ public class MainActivity extends Activity
         return true;
     }
 
-    public void onClickDietary(View v) {
+    public void onResultsClicked(View v) {
         ResultsFragment resultsFrag = new ResultsFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, resultsFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(resultsFrag);
     }
 
-    public void onClickEdit(View v) {
+    public void onEditClicked(View v) {
         IngredientsFragment ingredientsFrag = new IngredientsFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, ingredientsFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(ingredientsFrag);
     }
 
-    public void onClickToDietary(View v) {
+    public void onDietaryClicked(View v) {
         DietaryFragment dietaryFrag = new DietaryFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, dietaryFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(dietaryFrag);
 
 /*        EditText addIngredientET = (EditText) view.findViewById(R.id.addIngredientET);
 
@@ -239,19 +230,21 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void storeClicked(long id) {
+    public void onStoreClicked(long id) {
         FindDealsByStoreFragment storeDealsFrag = new FindDealsByStoreFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, storeDealsFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(storeDealsFrag);
     }
 
     @Override
-    public void resultClicked(long id) {
+    public void onRecipeClicked(long id) {
         RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
+        doFragTransaction(detailsFrag);
+    }
+
+    // helper function
+    private void doFragTransaction (Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, detailsFrag);
+        fragTransaction.replace(R.id.content_frame, fragment);
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
