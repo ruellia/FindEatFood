@@ -44,7 +44,7 @@
             android:id="@+id/dietaryActivityB"
             android:layout_width="match_parent"
             android:text="@string/next_button"
-            android:onClick="onClickToDietary">
+            android:onClick="onDietaryClicked">
         </Button>
     </RelativeLayout>
 

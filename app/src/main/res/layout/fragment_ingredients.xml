@@ -37,7 +37,7 @@
         <Button style="@style/buttonStyle"
             android:id="@+id/dietaryActivityB"
             android:text="@string/next_button"
-            android:onClick="onClickToDietary"
+            android:onClick="onDietaryClicked"
             ></Button>
 
     </RelativeLayout>

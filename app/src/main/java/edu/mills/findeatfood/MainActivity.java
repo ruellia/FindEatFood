@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,9 +41,9 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
         titles = getResources().getStringArray(R.array.titles);
         drawerList = (ListView) findViewById(R.id.drawer);
-        //reference to Drawer Layout
+        // reference to Drawer Layout
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //Populate the ListView
+        // populate the ListView
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_activated_1, titles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -80,7 +79,6 @@ public class MainActivity extends Activity
             }
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
-
         }
     }
 
@@ -130,9 +128,7 @@ public class MainActivity extends Activity
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
-        //set action bar title
         setActionBarTitle(position);
-        //close drawer
         drawerLayout.closeDrawer(drawerList);
     }
 
@@ -170,7 +166,8 @@ public class MainActivity extends Activity
         } else {
             title = titles[position];
         }
-        getActionBar().setTitle(" " + " " + " " + title);
+        String paddedTitle = "   " + title;
+        getActionBar().setTitle(paddedTitle);
     }
 
 
@@ -211,28 +208,19 @@ public class MainActivity extends Activity
         return true;
     }
 
-    public void onClickDietary(View v) {
+    public void onResultsClicked(View v) {
         ResultsFragment resultsFrag = new ResultsFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, resultsFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(resultsFrag);
     }
 
-    public void onClickEdit(View v) {
+    public void onEditClicked(View v) {
         IngredientsFragment ingredientsFrag = new IngredientsFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, ingredientsFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(ingredientsFrag);
     }
 
-    public void onClickToDietary(View v) {
+    public void onDietaryClicked(View v) {
         DietaryFragment dietaryFrag = new DietaryFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, dietaryFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(dietaryFrag);
 
 /*        EditText addIngredientET = (EditText) view.findViewById(R.id.addIngredientET);
 
@@ -242,19 +230,21 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void storeClicked(long id) {
+    public void onStoreClicked(long id) {
         FindDealsByStoreFragment storeDealsFrag = new FindDealsByStoreFragment();
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, storeDealsFrag);
-        fragTransaction.addToBackStack(null);
-        fragTransaction.commit();
+        doFragTransaction(storeDealsFrag);
     }
 
     @Override
-    public void resultClicked(long id) {
+    public void onRecipeClicked(long id) {
         RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
+        doFragTransaction(detailsFrag);
+    }
+
+    // helper function
+    private void doFragTransaction (Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, detailsFrag);
+        fragTransaction.replace(R.id.content_frame, fragment);
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
