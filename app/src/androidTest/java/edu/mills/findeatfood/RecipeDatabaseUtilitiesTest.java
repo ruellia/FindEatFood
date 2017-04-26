@@ -14,9 +14,10 @@ import static org.junit.Assert.assertEquals;
 public class RecipeDatabaseUtilitiesTest {
 
     private static final String[] recipeNamesArray = {"CHICKEN SOUP", "ICE CREAM", "BURRITO"};
-    private static final int[] recipeIdsArray = {111111, 222222, 333333};
+    private static final String[] recipeIdsArray = {"CHICKEN-SOUP-214216",
+            "ICE-CREAM-915810", "BURRITO-166461"};
     private String recipeName;
-    private int recipeId;
+    private String recipeId;
     private SQLiteDatabase db;
     private Cursor insertRecipeCursor;
     private Cursor getAllRecipeCursor;
@@ -52,7 +53,7 @@ public class RecipeDatabaseUtilitiesTest {
         int i = 0;
         while (insertRecipeCursor.moveToNext()) {
             recipeName = insertRecipeCursor.getString(0);
-            recipeId = insertRecipeCursor.getInt(1);
+            recipeId = insertRecipeCursor.getString(1);
             assertEquals(recipeNamesArray[i], recipeName);
             assertEquals(recipeIdsArray[i], recipeId);
             i++;
@@ -65,7 +66,7 @@ public class RecipeDatabaseUtilitiesTest {
         int j = 0;
         while (getAllRecipeCursor.moveToNext()) {
             recipeName = getAllRecipeCursor.getString(0);
-            recipeId = getAllRecipeCursor.getInt(1);
+            recipeId = getAllRecipeCursor.getString(1);
             assertEquals(recipeNamesArray[j], recipeName);
             assertEquals(recipeIdsArray[j], recipeId);
             j++;

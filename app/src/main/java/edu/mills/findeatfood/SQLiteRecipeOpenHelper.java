@@ -31,7 +31,9 @@ public class SQLiteRecipeOpenHelper extends SQLiteOpenHelper {
         if (oldVersion < 1) {
             db.execSQL("CREATE TABLE " + RECIPE_TABLE + " (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     RECIPE_NAME_COL + " STRING," +
-                    RECIPE_ID_COL + " INTEGER);");
+                    RECIPE_ID_COL + " STRING);");
+            RecipeDatabaseUtilities.insertRecipe(db, "Beef Bourguignon", "Beef-bourguignon-333851");
+            RecipeDatabaseUtilities.insertRecipe(db, "Pork Chops Au Poivre", "Pork-Chops-Au-Poivre-1568332");
         }
     }
 }

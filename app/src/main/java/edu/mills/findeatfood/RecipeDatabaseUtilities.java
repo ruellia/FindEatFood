@@ -13,7 +13,7 @@ public final class RecipeDatabaseUtilities {
 
     public static void insertRecipe(SQLiteDatabase db,
                                     String recipeName,
-                                    int recipeId){
+                                    String recipeId){
         ContentValues values = new ContentValues();
         values.put(SQLiteRecipeOpenHelper.RECIPE_NAME_COL, recipeName);
         values.put(SQLiteRecipeOpenHelper.RECIPE_ID_COL, recipeId);
