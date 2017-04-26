@@ -40,7 +40,7 @@
     <string name="edit">Edit</string>
 
     <string name="recipe_detail">Recipe Detail</string>
-    <string name="recipe_detail_information">To test that the scroll works with a burrito recipe.\n
+    <string name="recipe_detail_information">
         Ingredients\n
     1 pound ground beef\n
     1 envelope taco seasoning\n
@@ -49,14 +49,6 @@
     1 cup (4 ounces) shredded Colby-Monterey Jack cheese\n
     4 teaspoons canola oil\n
     Sour cream and salsa\n
-    Directions\n
-    In a large skillet, cook beef over medium heat until no longer pink; \ndrain.\n Stir in taco seasoning.\n
-        In a small saucepan, cook refried beans over medium-low heat for 2-3 minutes or until heated through.
-    \nSpoon about 1/3 cup of beans off-center on each tortilla; top with 1/4 cup beef mixture. \nSprinkle with cheese.
-        \nFold sides and ends of tortillas over filling and roll up.\n
-    In a large skillet over medium-high heat, brown burritos in oil on all sides. Serve with sour cream and salsa.\n
-    Freeze option:\n Individually wrap cooled burritos in paper towels and foil; freeze in a resealable plastic freezer bag.\n
-        To use, remove foil; place paper towel-wrapped burrito on a microwave-safe plate.
-        \nMicrowave on high 3-4 minutes or until heated through, turning once. \nLet stand 20 seconds. \nYield: \n6 servings.</string>
+    </string>
 
 </resources>
