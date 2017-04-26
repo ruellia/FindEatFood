@@ -22,7 +22,7 @@
             <TextView style="@style/header_style"
                 android:id="@+id/recipe_detail"
                 android:gravity="center"
-                android:text="@string/recipe_name"
+                android:text="@string/recipe_detail"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             //For the star
