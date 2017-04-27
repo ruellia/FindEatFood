@@ -3,14 +3,9 @@ package edu.mills.findeatfood;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
-import java.util.concurrent.Exchanger;
-import java.util.concurrent.Semaphore;
-
 import edu.mills.findeatfood.models.Recipe;
 import edu.mills.findeatfood.models.ValContainer;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 import retrofit2.http.GET;
@@ -21,6 +16,7 @@ public final class HttpRequestUtilities {
     }
 
     // Retrofit interfaces
+    //TODO: read keys from private file
     private static interface YummlyInterface {
         // Request method and URL specified in the annotation
         // Callback for the parsed response is the last parameter

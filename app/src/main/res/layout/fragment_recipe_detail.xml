@@ -96,7 +96,8 @@
                 </Button>
               </RelativeLayout>
 
-    </RelativeLayout>
- </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </ScrollView>

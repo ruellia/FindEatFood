@@ -245,7 +245,7 @@ public class MainActivity extends Activity
     }
 
     // helper function
-    private void doFragTransaction (Fragment fragment) {
+    private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
         fragTransaction.replace(R.id.content_frame, fragment);
         fragTransaction.addToBackStack(null);

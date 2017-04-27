@@ -4,21 +4,15 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import edu.mills.findeatfood.models.Recipe;
 
 public class FavoritesFragment extends ListFragment {
 

@@ -2,7 +2,6 @@ package edu.mills.findeatfood;
 
 import android.app.Activity;
 import android.app.ListFragment;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,22 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.squareup.moshi.JsonAdapter;
-import com.squareup.moshi.Moshi;
-
-import edu.mills.findeatfood.models.Recipe;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.moshi.MoshiConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.HTTP;
-import retrofit2.http.Path;
-
 public class ResultsFragment extends ListFragment {
 
-    private ResultsListListener listener;;
+    private ResultsListListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +40,7 @@ public class ResultsFragment extends ListFragment {
         }
     }
 
-static interface ResultsListListener {
+    static interface ResultsListListener {
         void onRecipeClicked(String recipeId);
     }
 }

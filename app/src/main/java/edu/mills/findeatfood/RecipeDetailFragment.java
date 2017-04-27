@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.List;
-
 import edu.mills.findeatfood.models.Recipe;
 
 public class RecipeDetailFragment extends Fragment {
@@ -58,6 +55,5 @@ public class RecipeDetailFragment extends Fragment {
             TextView rating = (TextView) getActivity().findViewById(R.id.rating);
             rating.setText("Rating: " + params.rating);
         }
-
     }
 }
