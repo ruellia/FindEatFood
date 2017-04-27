@@ -9,9 +9,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class ResultsFragment extends ListFragment {
 
     private ResultsListListener listener;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        Bundle recipeBundle = getArguments();
+        if (recipeBundle != null) {
+            ArrayList<String> dietaryList = recipeBundle.getStringArrayList(MainActivity.DIETARY_RESTRICTIONS);
+            String[] ingredientsList = recipeBundle.getStringArray(MainActivity.INGREDIENTS);
+        }
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
