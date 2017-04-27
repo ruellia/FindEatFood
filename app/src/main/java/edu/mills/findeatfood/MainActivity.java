@@ -16,11 +16,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends Activity
@@ -32,6 +36,9 @@ public class MainActivity extends Activity
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private int currentPosition = 0;
+    private String[] ingredients;
+    public static final String INGREDIENTS = "ingredients";
+    public static final String DIETARY_RESTRICTIONS = "dietaryRestrictions";
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -215,17 +222,25 @@ public class MainActivity extends Activity
     }
 
     public void onResultsClicked(View v) {
+        int numberOfCheckBoxes =
+                getResources().getStringArray(R.array.dietaryOptions).length;
+        LinearLayout dietaryOptions = (LinearLayout) findViewById(R.id.dietaryOptionsLayout);
+        ArrayList<String> dietaryRestrictions = new ArrayList<String>();
+
+        for (int i = 0; i < numberOfCheckBoxes; i++) {
+            CheckBox cb =
+                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.checkBoxIds.get(i));
+            if (cb != null && cb.isChecked()) {
+                dietaryRestrictions.add(cb.getText().toString());
+            }
+        }
+
+        Bundle recipeBundle = new Bundle();
+        recipeBundle.putStringArray(INGREDIENTS, ingredients);
+        recipeBundle.putStringArrayList(DIETARY_RESTRICTIONS, dietaryRestrictions);
         ResultsFragment resultsFrag = new ResultsFragment();
+        resultsFrag.setArguments(recipeBundle);
         doFragTransaction(resultsFrag);
-
-        Log.d("MainActivity", "onResultsClicked");
-
-
-
-
-        //do Bundle
-        Bundle dietaryRestrictionsToPass = new Bundle();
-
     }
 
     public void onEditClicked(View v) {
@@ -235,18 +250,21 @@ public class MainActivity extends Activity
 
     public void onDietaryClicked(View v) {
         Log.d("MainActivity", "onDietaryClicked");
-
         EditText addIngredientET = (EditText) findViewById(R.id.addIngredientET);
         if (addIngredientET.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
         } else {
-            Bundle toPass = new Bundle();
-            String[] ingredients = parseIngredientInput(addIngredientET.getText().toString());
-            toPass.putStringArray("ingredients", ingredients);
-            DietaryFragment dietaryFrag = new DietaryFragment();
-            dietaryFrag.setArguments(toPass);
-            doFragTransaction(dietaryFrag);
+            setIngredients(parseIngredientInput(addIngredientET.getText().toString()));
         }
+        Log.d("MainActivity diet", Arrays.toString(ingredients));
+
+        DietaryFragment dietaryFrag = new DietaryFragment();
+        doFragTransaction(dietaryFrag);
+    }
+
+
+    private void setIngredients(String[] ingredients) {
+        this.ingredients = ingredients;
     }
 
     private String[] parseIngredientInput(String ingredients) {
@@ -275,4 +293,5 @@ public class MainActivity extends Activity
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
+
 }
