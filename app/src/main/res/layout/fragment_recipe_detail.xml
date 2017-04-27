@@ -107,7 +107,7 @@
                 android:onClick="Link to Recipe URL">
 
             </Button>
-          </RelativeLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 </LinearLayout>
