@@ -236,8 +236,11 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void onRecipeClicked(long id) {
+    public void onRecipeClicked(String recipeId) {
+        Bundle toPass = new Bundle();
+        toPass.putString("recipeId", recipeId);
         RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
+        detailsFrag.setArguments(toPass);
         doFragTransaction(detailsFrag);
     }
 

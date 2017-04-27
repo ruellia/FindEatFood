@@ -25,12 +25,11 @@ import retrofit2.http.Path;
 
 public class ResultsFragment extends ListFragment {
 
-        private ResultsListListener listener;;
+    private ResultsListListener listener;;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        new GetRecipeTask().execute();
         String[] tempValues = {"Recipe One", "Recipe Two", "Recipe Three"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -51,22 +50,11 @@ public class ResultsFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (listener != null) {
-            listener.onRecipeClicked(id);
+            listener.onRecipeClicked("temp");
         }
     }
 
 static interface ResultsListListener {
-        void onRecipeClicked(long id);
+        void onRecipeClicked(String recipeId);
     }
-}
-
-class GetRecipeTask extends AsyncTask<Void, Void, Boolean> {
-
-    @Override
-    protected Boolean doInBackground(Void... params) {
-        Recipe recipe = HttpRequestUtilities.getRecipe("Beef-bourguignon-333851");
-        System.out.println(recipe);
-        return true;
-    }
-
 }
