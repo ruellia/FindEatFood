@@ -40,15 +40,5 @@
     <string name="edit">Edit</string>
 
     <string name="recipe_detail">Recipe Detail</string>
-    <string name="recipe_detail_information">
-        Ingredients\n
-    1 pound ground beef\n
-    1 envelope taco seasoning\n
-    1 can (16 ounces) refried beans\n
-    6 flour tortillas (12 inches), warmed\n
-    1 cup (4 ounces) shredded Colby-Monterey Jack cheese\n
-    4 teaspoons canola oil\n
-    Sour cream and salsa\n
-    </string>
 
 </resources>

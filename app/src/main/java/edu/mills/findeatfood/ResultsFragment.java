@@ -11,9 +11,6 @@ import android.widget.ListView;
 
 public class ResultsFragment extends ListFragment {
 
-    static interface ResultsListListener {
-        void onRecipeClicked(long id);
-    };
     private ResultsListListener listener;
 
     @Override
@@ -39,7 +36,11 @@ public class ResultsFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (listener != null) {
-            listener.onRecipeClicked(id);
+            listener.onRecipeClicked("temp");
         }
+    }
+
+    static interface ResultsListListener {
+        void onRecipeClicked(String recipeId);
     }
 }

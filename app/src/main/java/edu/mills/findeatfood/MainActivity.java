@@ -236,13 +236,16 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void onRecipeClicked(long id) {
+    public void onRecipeClicked(String recipeId) {
+        Bundle toPass = new Bundle();
+        toPass.putString("recipeId", recipeId);
         RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
+        detailsFrag.setArguments(toPass);
         doFragTransaction(detailsFrag);
     }
 
     // helper function
-    private void doFragTransaction (Fragment fragment) {
+    private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
         fragTransaction.replace(R.id.content_frame, fragment);
         fragTransaction.addToBackStack(null);
