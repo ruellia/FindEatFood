@@ -2,46 +2,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
+    android:orientation="vertical"
+    android:fillViewport="true"
     tools:context="edu.mills.findeatfood.RecipeDetailFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="16dp"
-        android:weightSum="1">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp"
             android:weightSum="1">
 
-            <TextView style="@style/header_style"
-                android:id="@+id/recipe_detail"
-                android:gravity="center"
-                android:text="@string/recipe_detail"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            //For the star
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recipe_photo"
+                android:src="@drawable/fridge_of_food"
+                android:alpha=".2"
+                android:layout_gravity="center"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <ImageButton
                 android:id="@+id/favorite_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="0.41"
                 android:background="#00ffffff"
-                android:gravity="right"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="10dp"
                 android:src="@android:drawable/btn_star" />
-        </LinearLayout>
 
-        <TextView
-            android:id="@+id/recipe_detail_information"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/recipe_detail_information" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_name"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="24dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/relativeLayout"
+                android:layout_alignEnd="@+id/relativeLayout" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_prep_time"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="90dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_ingredients"
+                android:gravity="left"
+                android:layout_marginTop="60dp"
+                android:layout_margin="30dp"
+                android:layout_below="@+id/recipe_prep_time"
+                android:layout_alignRight="@+id/recipe_name"
+                android:layout_alignEnd="@+id/recipe_name" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rating"
+                android:gravity="center"
+                android:layout_below="@+id/recipe_ingredients"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="11dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="20dp"
+                android:id="@+id/relativeLayout">
+
+                <Button style="@style/buttonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recipe_instructions"
+                    android:text="Directions"
+                    android:gravity="center"
+                    android:onClick="Link to Recipe URL">
+
+                </Button>
+              </RelativeLayout>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.BoolRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
@@ -15,8 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
+import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class MainActivity extends Activity
         implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener {
@@ -229,14 +234,23 @@ public class MainActivity extends Activity
     }
 
     public void onDietaryClicked(View v) {
-        DietaryFragment dietaryFrag = new DietaryFragment();
-        doFragTransaction(dietaryFrag);
+        Log.d("MainActivity", "onDietaryClicked");
 
-/*        EditText addIngredientET = (EditText) view.findViewById(R.id.addIngredientET);
-
+        EditText addIngredientET = (EditText) findViewById(R.id.addIngredientET);
         if (addIngredientET.getText().toString().equals("")) {
-            Toast.makeText(getActivity().getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
-        }*/
+            Toast.makeText(getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
+        } else {
+            Bundle toPass = new Bundle();
+            String[] ingredients = parseIngredientInput(addIngredientET.getText().toString());
+            toPass.putStringArray("ingredients", ingredients);
+            DietaryFragment dietaryFrag = new DietaryFragment();
+            dietaryFrag.setArguments(toPass);
+            doFragTransaction(dietaryFrag);
+        }
+    }
+
+    private String[] parseIngredientInput(String ingredients) {
+        return ingredients.split("\\s*,\\s*");
     }
 
     @Override
@@ -246,13 +260,16 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void onRecipeClicked(long id) {
+    public void onRecipeClicked(String recipeId) {
+        Bundle toPass = new Bundle();
+        toPass.putString("recipeId", recipeId);
         RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
+        detailsFrag.setArguments(toPass);
         doFragTransaction(detailsFrag);
     }
 
     // helper function
-    private void doFragTransaction (Fragment fragment) {
+    private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
         fragTransaction.replace(R.id.content_frame, fragment);
         fragTransaction.addToBackStack(null);
