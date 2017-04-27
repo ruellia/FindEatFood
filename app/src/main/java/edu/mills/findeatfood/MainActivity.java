@@ -217,6 +217,15 @@ public class MainActivity extends Activity
     public void onResultsClicked(View v) {
         ResultsFragment resultsFrag = new ResultsFragment();
         doFragTransaction(resultsFrag);
+
+        Log.d("MainActivity", "onResultsClicked");
+
+
+
+
+        //do Bundle
+        Bundle dietaryRestrictionsToPass = new Bundle();
+
     }
 
     public void onEditClicked(View v) {
