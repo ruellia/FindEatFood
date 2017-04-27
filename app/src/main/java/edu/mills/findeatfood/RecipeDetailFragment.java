@@ -2,12 +2,15 @@ package edu.mills.findeatfood;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import edu.mills.findeatfood.models.Recipe;
@@ -43,7 +46,7 @@ public class RecipeDetailFragment extends Fragment {
 
         @Override
         //TODO: populate image
-        protected void onPostExecute(Recipe params) {
+        protected void onPostExecute(final Recipe params) {
             progress.dismiss();
             TextView name = (TextView) getActivity().findViewById(R.id.recipe_name);
             name.setText(params.name);
@@ -54,6 +57,14 @@ public class RecipeDetailFragment extends Fragment {
             ingredients.setText(joined);
             TextView rating = (TextView) getActivity().findViewById(R.id.rating);
             rating.setText("Rating: " + params.rating);
+            Button directionsButton = (Button) getActivity().findViewById(R.id.recipe_instructions);
+            directionsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(params.getSourceURL()));
+                    startActivity(browserIntent);
+                }
+            });
         }
     }
 }
