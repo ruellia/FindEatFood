@@ -8,7 +8,12 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DietaryFragment extends Fragment {
+
+    public static List<Integer> checkBoxIds = new ArrayList<Integer>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,11 +28,16 @@ public class DietaryFragment extends Fragment {
                 getResources().getStringArray(R.array.dietaryOptions);
         LinearLayout dietaryOptionsLayout =
                 (LinearLayout) view.findViewById(R.id.dietaryOptionsLayout);
+
         for (int i = 0; i < dietaryOptions.length; i++) {
             CheckBox checkBox = new CheckBox(this.getActivity());
             checkBox.setText(dietaryOptions[i]);
+            int checkBoxId = view.generateViewId();
+            checkBoxIds.add(checkBoxId);
+            checkBox.setId(checkBoxId);
             dietaryOptionsLayout.addView(checkBox);
         }
+
         return view;
     }
 }

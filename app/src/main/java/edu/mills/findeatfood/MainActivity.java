@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -211,6 +212,15 @@ public class MainActivity extends Activity
     public void onResultsClicked(View v) {
         ResultsFragment resultsFrag = new ResultsFragment();
         doFragTransaction(resultsFrag);
+
+        Log.d("MainActivity", "onResultsClicked");
+
+
+
+
+        //do Bundle
+        Bundle dietaryRestrictionsToPass = new Bundle();
+
     }
 
     public void onEditClicked(View v) {
