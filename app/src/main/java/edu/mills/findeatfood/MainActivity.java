@@ -254,7 +254,6 @@ public class MainActivity extends Activity
         if (addIngredientET.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
         } else {
-            Log.d("MainActivity diet", Arrays.toString(ingredients));
             DietaryFragment dietaryFrag = new DietaryFragment();
             doFragTransaction(dietaryFrag);
             setIngredients(parseIngredientInput(addIngredientET.getText().toString()));
