@@ -19,7 +19,8 @@ public class ResultsFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         Bundle recipeBundle = getArguments();
         if (recipeBundle != null) {
-            ArrayList<String> dietaryList = recipeBundle.getStringArrayList(MainActivity.DIETARY_RESTRICTIONS);
+            ArrayList<String> dietaryList = recipeBundle.getStringArrayList(MainActivity.DIET_RESTRICTIONS);
+            ArrayList<String> allergyList = recipeBundle.getStringArrayList(MainActivity.ALLERGY_RESTRICTIONS);
             String[] ingredientsList = recipeBundle.getStringArray(MainActivity.INGREDIENTS);
         }
         super.onCreate(savedInstanceState);
