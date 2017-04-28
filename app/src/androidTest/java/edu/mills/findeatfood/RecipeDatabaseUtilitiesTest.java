@@ -8,6 +8,8 @@ import android.test.RenamingDelegatingContext;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.mills.findeatfood.models.Recipe;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -59,5 +61,13 @@ public class RecipeDatabaseUtilitiesTest {
         String recipeId = recipeCursor.getString(1);
         assertEquals("CHICKEN SOUP", recipeName);
         assertEquals("Chicken-Soup-000000", recipeId);
+    }
+
+    @Test
+    public void searchForRecipe() throws Exception{
+        Cursor recipeCursor = RecipeDatabaseUtilities.searchForRecipe(db, "Beef-bourguignon-333851");
+        recipeCursor.moveToNext();
+        assertEquals("Beef-bourguignon-333851", recipeCursor.getString(1));
+
     }
 }
