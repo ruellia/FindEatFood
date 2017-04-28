@@ -31,7 +31,6 @@ public final class RecipeDatabaseUtilities {
                 null);
     }
 
-    //search method using query to search for a recipe
     public static Cursor searchForRecipe(SQLiteDatabase db,
                                          String recipeId){
         return db.query(SQLiteRecipeOpenHelper.RECIPE_TABLE,
@@ -43,5 +42,14 @@ public final class RecipeDatabaseUtilities {
                 null,
                 null);
     }
+
+    public static void deleteRecipe(SQLiteDatabase db,
+                                    String recipeId){
+        db.delete(SQLiteRecipeOpenHelper.RECIPE_TABLE,
+                SQLiteRecipeOpenHelper.RECIPE_ID_COL + " = ?",
+                new String[]{recipeId});
+    }
+
+
 
 }
