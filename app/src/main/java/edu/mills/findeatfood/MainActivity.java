@@ -78,10 +78,20 @@ public class MainActivity extends Activity
         public void onBackStackChanged() {
             FragmentManager fragMan = getFragmentManager();
             Fragment fragment = fragMan.findFragmentByTag("visible_fragment");
+
             if (fragment instanceof HomeFragment) {
                 currentPosition = 0;
             }
             if (fragment instanceof IngredientsFragment) {
+                currentPosition = 1;
+            }
+            if (fragment instanceof DietaryFragment) {
+                currentPosition = 1;
+            }
+            if (fragment instanceof ResultsFragment) {
+                currentPosition = 1;
+            }
+            if (fragment instanceof RecipeDetailFragment) {
                 currentPosition = 1;
             }
             if (fragment instanceof FindDealsFragment) {
@@ -287,7 +297,7 @@ public class MainActivity extends Activity
     // helper function
     private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, fragment);
+        fragTransaction.replace(R.id.content_frame, fragment, "visible_fragment");
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }

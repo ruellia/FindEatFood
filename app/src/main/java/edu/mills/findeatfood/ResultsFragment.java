@@ -26,8 +26,7 @@ public class ResultsFragment extends ListFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         String[] tempValues = {"Recipe One", "Recipe Two", "Recipe Three"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
