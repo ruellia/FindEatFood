@@ -299,7 +299,6 @@ public class MainActivity extends Activity
         }
     }
 
-
     private void setIngredients(String[] ingredients) {
         this.ingredients = ingredients;
     }
