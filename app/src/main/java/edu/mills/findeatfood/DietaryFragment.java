@@ -20,7 +20,7 @@ public class DietaryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dietary, container, false);
 
         String[] dietaryOptions =
-                getResources().getStringArray(R.array.dietaryOptions);
+                getResources().getStringArray(R.array.dietaryOptionsName);
         LinearLayout dietaryOptionsLayout =
                 (LinearLayout) view.findViewById(R.id.dietaryOptionsLayout);
 

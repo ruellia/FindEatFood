@@ -7,7 +7,6 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.BoolRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
@@ -23,9 +22,10 @@ import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class MainActivity extends Activity
         implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener {
@@ -232,8 +232,16 @@ public class MainActivity extends Activity
     }
 
     public void onResultsClicked(View v) {
+        String[] dietaryOptionsName = getResources().getStringArray(R.array.dietaryOptionsName);
+        String[] dietaryOptionsCode = getResources().getStringArray(R.array.dietaryOptionsCode);
+
+        HashMap<String, String> dietaryHashMap = new HashMap<String, String>();
+        for (int i = 0; i < dietaryOptionsCode.length; i++) {
+            dietaryHashMap.put(dietaryOptionsName[i], dietaryOptionsCode[i]);
+        }
+
         int numberOfCheckBoxes =
-                getResources().getStringArray(R.array.dietaryOptions).length;
+                getResources().getStringArray(R.array.dietaryOptionsName).length;
         LinearLayout dietaryOptions = (LinearLayout) findViewById(R.id.dietaryOptionsLayout);
         ArrayList<String> dietaryRestrictions = new ArrayList<String>();
 
@@ -241,9 +249,12 @@ public class MainActivity extends Activity
             CheckBox cb =
                     (CheckBox) dietaryOptions.findViewById(DietaryFragment.checkBoxIds.get(i));
             if (cb != null && cb.isChecked()) {
-                dietaryRestrictions.add(cb.getText().toString());
+                String cbName = cb.getText().toString();
+                String cbCode = (String) dietaryHashMap.get(cbName);
+                dietaryRestrictions.add(cbCode);
             }
         }
+
 
         Bundle recipeBundle = new Bundle();
         recipeBundle.putStringArray(INGREDIENTS, ingredients);
@@ -301,5 +312,4 @@ public class MainActivity extends Activity
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
-
 }
