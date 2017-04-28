@@ -3,20 +3,51 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="dietary_restrictions">Dietary Restrictions</string>
 
-    // Ingredient Activity
     <string name="your_ingredients">Recipe Search</string>
     <string name="add">Add</string>
     <string name="add_ingredient">Add Ingredients</string>
     <string name="next_button">Next</string>
     <string name="error_ingredient">You must enter at least one ingredient!</string>
 
-    <string-array name="dietaryOptions">
-        <item>Vegan</item>
-        <item>Vegetarian</item>
-        <item>Pescetarian</item>
-        <item>Paleo</item>
-        <item>Ovo vegetarian</item>
+    <string-array name="dietaryOptionsName">
         <item>Lacto vegetarian</item>
+        <item>Ovo vegetarian</item>
+        <item>Pescetarian</item>
+        <item>Vegan</item>
+        <item>Lacto-ovo vegetarian</item>
+        <item>Paleo</item>
+
+        <item>Gluten-Free</item>
+        <item>Peanut-Free</item>
+        <item>Seafood-Free</item>
+        <item>Sesame-Free</item>
+        <item>Soy-Free</item>
+        <item>Dairy-Free</item>
+        <item>Egg-Free</item>
+        <item>Sulfite-Free</item>
+        <item>Tree Nut-Free</item>
+        <item>Wheat-Free</item>
+    </string-array>
+
+
+    <string-array name="dietaryOptionsCode">
+        <item>388^Lacto vegetarian</item>
+        <item>389^Ovo vegetarian</item>
+        <item>390^Pescetarian</item>
+        <item>386^Vegan </item>
+        <item>387^Lacto-ovo vegetarian</item>
+        <item>403^Paleo</item>
+
+        <item>393^Gluten-Free</item>
+        <item>394^Peanut-Free</item>
+        <item>398^Seafood-Free</item>
+        <item>399^Sesame-Free</item>
+        <item>400^Soy-Free</item>
+        <item>396^Dairy-Free</item>
+        <item>397^Egg-Free</item>
+        <item>401^Sulfite-Free</item>
+        <item>395^Tree Nut-Free</item>
+        <item>392^Wheat-Free</item>
     </string-array>
 
     <!-- Navdrawer items -->
