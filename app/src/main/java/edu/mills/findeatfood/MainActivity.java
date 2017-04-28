@@ -7,7 +7,6 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.BoolRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
@@ -23,9 +22,8 @@ import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class MainActivity extends Activity
         implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener {
@@ -38,7 +36,8 @@ public class MainActivity extends Activity
     private int currentPosition = 0;
     private String[] ingredients;
     public static final String INGREDIENTS = "ingredients";
-    public static final String DIETARY_RESTRICTIONS = "dietaryRestrictions";
+    public static final String DIET_RESTRICTIONS = "dietRestrictions";
+    public static final String ALLERGY_RESTRICTIONS = "allergyRestrictions";
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -232,22 +231,52 @@ public class MainActivity extends Activity
     }
 
     public void onResultsClicked(View v) {
-        int numberOfCheckBoxes =
-                getResources().getStringArray(R.array.dietaryOptions).length;
-        LinearLayout dietaryOptions = (LinearLayout) findViewById(R.id.dietaryOptionsLayout);
-        ArrayList<String> dietaryRestrictions = new ArrayList<String>();
+        String[] dietaryOptionsName = getResources().getStringArray(R.array.dietOptionsName);
+        String[] dietaryOptionsCode = getResources().getStringArray(R.array.dietOptionsCode);
+        String[] allergyOptionsName = getResources().getStringArray(R.array.allergyOptionsName);
+        String[] allergyOptionsCode = getResources().getStringArray(R.array.allergyOptionsCode);
 
-        for (int i = 0; i < numberOfCheckBoxes; i++) {
+        HashMap<String, String> restrictionsHashMap = new HashMap<String, String>();
+        for (int i = 0; i < dietaryOptionsCode.length; i++) {
+            restrictionsHashMap.put(dietaryOptionsName[i], dietaryOptionsCode[i]);
+        }
+
+        for (int i = 0; i < allergyOptionsCode.length; i++) {
+            restrictionsHashMap.put(allergyOptionsName[i], allergyOptionsCode[i]);
+        }
+
+        int dietCheckBoxes =
+                getResources().getStringArray(R.array.dietOptionsName).length;
+        int allergyCheckBoxes =
+                getResources().getStringArray(R.array.allergyOptionsName).length;
+        LinearLayout dietaryOptions = (LinearLayout) findViewById(R.id.dietaryOptionsLayout);
+        ArrayList<String> dietRestrictions = new ArrayList<String>();
+        ArrayList<String> allergyRestrictions = new ArrayList<String>();
+
+        for (int i = 0; i < dietCheckBoxes; i++) {
             CheckBox cb =
-                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.checkBoxIds.get(i));
+                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.dietOptionsIds.get(i));
             if (cb != null && cb.isChecked()) {
-                dietaryRestrictions.add(cb.getText().toString());
+                String cbName = cb.getText().toString();
+                String cbCode = (String) restrictionsHashMap.get(cbName);
+                dietRestrictions.add(cbCode);
+            }
+        }
+
+        for (int j = 0; j < allergyCheckBoxes; j++) {
+            CheckBox cb =
+                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.allergyOptionsIds.get(j));
+            if (cb != null && cb.isChecked()) {
+                String cbName = cb.getText().toString();
+                String cbCode = (String) restrictionsHashMap.get(cbName);
+                allergyRestrictions.add(cbCode);
             }
         }
 
         Bundle recipeBundle = new Bundle();
         recipeBundle.putStringArray(INGREDIENTS, ingredients);
-        recipeBundle.putStringArrayList(DIETARY_RESTRICTIONS, dietaryRestrictions);
+        recipeBundle.putStringArrayList(DIET_RESTRICTIONS, dietRestrictions);
+        recipeBundle.putStringArrayList(ALLERGY_RESTRICTIONS, allergyRestrictions);
         ResultsFragment resultsFrag = new ResultsFragment();
         resultsFrag.setArguments(recipeBundle);
         doFragTransaction(resultsFrag);
