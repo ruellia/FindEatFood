@@ -60,4 +60,27 @@ public class RecipeDatabaseUtilitiesTest {
         assertEquals("CHICKEN SOUP", recipeName);
         assertEquals("Chicken-Soup-000000", recipeId);
     }
+
+    @Test
+    public void searchForRecipe() throws Exception{
+        // get cursor to all recipes with matching Ids
+        Cursor recipeCursor = RecipeDatabaseUtilities.searchForRecipe(db, "Beef-bourguignon-333851");
+
+        // move to first item in cursor
+        recipeCursor.moveToNext();
+
+        // verify that recipe is in database
+        assertEquals("Beef-bourguignon-333851", recipeCursor.getString(1));
+    }
+
+    @Test
+    public void deleteRecipe() throws Exception{
+        // deletes recipe from database
+        RecipeDatabaseUtilities.deleteRecipe(db,"Beef-bourguignon-333851");
+
+        // checks if recipe was deleted
+        Cursor recipeCursor =
+                RecipeDatabaseUtilities.searchForRecipe(db,"Beef-bourguignon-333851");
+        assertEquals(false, recipeCursor.moveToFirst());
+    }
 }

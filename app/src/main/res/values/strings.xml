@@ -12,10 +12,11 @@
 
     <string-array name="dietaryOptions">
         <item>Vegan</item>
-        <item>Pescatarian</item>
-        <item>No Nuts</item>
-        <item>Lactose Intolerant</item>
-        <item>No Gluten</item>
+        <item>Vegetarian</item>
+        <item>Pescetarian</item>
+        <item>Paleo</item>
+        <item>Ovo vegetarian</item>
+        <item>Lacto vegetarian</item>
     </string-array>
 
     <!-- Navdrawer items -->
