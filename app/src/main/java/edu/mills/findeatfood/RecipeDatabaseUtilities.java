@@ -13,14 +13,14 @@ public final class RecipeDatabaseUtilities {
 
     public static void insertRecipe(SQLiteDatabase db,
                                     String recipeName,
-                                    String recipeId){
+                                    String recipeId) {
         ContentValues values = new ContentValues();
         values.put(SQLiteRecipeOpenHelper.RECIPE_NAME_COL, recipeName);
         values.put(SQLiteRecipeOpenHelper.RECIPE_ID_COL, recipeId);
         db.insert(RECIPE_TABLE, null, values);
     }
 
-    public static Cursor getAllRecipes(SQLiteDatabase db){
+    public static Cursor getAllRecipes(SQLiteDatabase db) {
         return db.query(SQLiteRecipeOpenHelper.RECIPE_TABLE,
                 new String[]{SQLiteRecipeOpenHelper.RECIPE_NAME_COL
                         , SQLiteRecipeOpenHelper.RECIPE_ID_COL},
@@ -31,25 +31,30 @@ public final class RecipeDatabaseUtilities {
                 null);
     }
 
-    public static Cursor searchForRecipe(SQLiteDatabase db,
-                                         String recipeId){
-        return db.query(SQLiteRecipeOpenHelper.RECIPE_TABLE,
+    public static Boolean searchForRecipe(SQLiteDatabase db,
+                                          String recipeId) {
+        Cursor cursor = db.query(SQLiteRecipeOpenHelper.RECIPE_TABLE,
                 new String[]{SQLiteRecipeOpenHelper.RECIPE_NAME_COL,
-                SQLiteRecipeOpenHelper.RECIPE_ID_COL},
+                        SQLiteRecipeOpenHelper.RECIPE_ID_COL},
                 SQLiteRecipeOpenHelper.RECIPE_ID_COL + " = ?",
                 new String[]{recipeId},
                 null,
                 null,
                 null);
+
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public static void deleteRecipe(SQLiteDatabase db,
-                                    String recipeId){
+                                    String recipeId) {
         db.delete(SQLiteRecipeOpenHelper.RECIPE_TABLE,
                 SQLiteRecipeOpenHelper.RECIPE_ID_COL + " = ?",
                 new String[]{recipeId});
     }
-
 
 
 }

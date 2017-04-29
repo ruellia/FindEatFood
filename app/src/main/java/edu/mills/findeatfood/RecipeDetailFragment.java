@@ -37,7 +37,7 @@ public class RecipeDetailFragment extends Fragment {
 
     private class RecipeWrapper {
         public Recipe recipe;
-        public Cursor recipeCursor;
+        public Boolean isRecipeInDB;
     }
 
     private class GetRecipeTask extends AsyncTask<String, Void, RecipeWrapper> {
@@ -59,7 +59,7 @@ public class RecipeDetailFragment extends Fragment {
             recipe = HttpRequestUtilities.getRecipe(params[0]);
             RecipeWrapper recipeWrapper = new RecipeWrapper();
             recipeWrapper.recipe = recipe;
-            recipeWrapper.recipeCursor = RecipeDatabaseUtilities.searchForRecipe(db, recipe.id);
+            recipeWrapper.isRecipeInDB = RecipeDatabaseUtilities.searchForRecipe(db, recipe.id);
             return recipeWrapper;
         }
 
@@ -91,11 +91,9 @@ public class RecipeDetailFragment extends Fragment {
                 }
             });
             final CheckBox favoritesCB = (CheckBox) getView().findViewById(R.id.favorite_checkbox);
-            if (recipeWrapper.recipeCursor.moveToNext()) {
-                if ((recipeWrapper.recipe.id).equals(recipeWrapper.recipeCursor.getString(1))) {
+            if (recipeWrapper.isRecipeInDB) {
                     favoritesCBVal = true;
                     favoritesCB.setChecked(favoritesCBVal);
-                }
             }
             favoritesCB.setOnClickListener(new View.OnClickListener() {
                 @Override
