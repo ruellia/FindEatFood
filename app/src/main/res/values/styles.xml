@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:logo">@android:color/transparent</item>
-
         <item name="android:typeface">sans</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/drawer_list_selecter</item>
         <!-- Customize your theme here. -->
     </style>
 
