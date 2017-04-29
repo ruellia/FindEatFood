@@ -51,4 +51,13 @@
         <item name="android:background">#E86C2E</item>
     </style>
 
+
+    <style name="small_text" parent-="android:Theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
 </resources>
