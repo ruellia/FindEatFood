@@ -12,7 +12,7 @@
         />
 
         <Button style="@style/buttonStyle2"
-            android:id="@+id/SeeMoreButton"
+            android:id="@+id/seeMoreButton"
             android:text="@string/see_more"
             />
 

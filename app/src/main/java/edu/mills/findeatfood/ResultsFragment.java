@@ -2,41 +2,58 @@ package edu.mills.findeatfood;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import edu.mills.findeatfood.models.Matches;
+import edu.mills.findeatfood.models.SearchRecipes;
 
 public class ResultsFragment extends ListFragment {
 
     private ResultsListListener listener;
+    private List<Matches> recipesList = new ArrayList<Matches>();
+    private List<String> ingredients = new ArrayList<String>();
+    private List<String> dietRestrictions = new ArrayList<String>();
+    private List<String> allergyRestrictions = new ArrayList<String>();
+    private ProgressDialog progress;
+    private int startPosition;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         Bundle recipeBundle = getArguments();
-        if (recipeBundle != null) {
-            ArrayList<String> dietaryList = recipeBundle.getStringArrayList(MainActivity.DIET_RESTRICTIONS);
-            ArrayList<String> allergyList = recipeBundle.getStringArrayList(MainActivity.ALLERGY_RESTRICTIONS);
-            String[] ingredientsList = recipeBundle.getStringArray(MainActivity.INGREDIENTS);
-        }
-        super.onCreate(savedInstanceState);
+        dietRestrictions = recipeBundle.getStringArrayList(MainActivity.DIET_RESTRICTIONS);
+        allergyRestrictions = recipeBundle.getStringArrayList(MainActivity.ALLERGY_RESTRICTIONS);
+        ingredients = Arrays.asList(recipeBundle.getStringArray(MainActivity.INGREDIENTS));
+        new SearchRecipesTask().execute();
+
+        return inflater.inflate(R.layout.results, container, false);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        String[] tempValues = {"Recipe One", "Recipe Two", "Recipe Three"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                inflater.getContext(), android.R.layout.simple_list_item_1,
-                tempValues);
-        setListAdapter(adapter);
-        return inflater.inflate(R.layout.results, container, false);
-        // keeping this here for future reference as I'm not 100% on using bundle
-        //return super.onCreateView(inflater, container, savedInstanceState);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        Button seeMore = (Button) getActivity().findViewById(R.id.seeMoreButton);
+        seeMore.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startPosition += 10;
+                new SearchRecipesTask().execute();;
+            }
+        });
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -48,11 +65,48 @@ public class ResultsFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (listener != null) {
-            listener.onRecipeClicked("temp");
+            listener.onRecipeClicked(recipesList.get(position).id);
         }
     }
 
     static interface ResultsListListener {
         void onRecipeClicked(String recipeId);
+    }
+
+    private class SearchRecipesTask extends AsyncTask<Void, Void, SearchRecipes> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progress = new ProgressDialog(getActivity());
+            progress.setMessage("Getting recipes.");
+            progress.setTitle("Loading...");
+            progress.setIndeterminate(false);
+            progress.setCancelable(true);
+            progress.show();
+        }
+
+        @Override
+        protected SearchRecipes doInBackground(Void... params) {
+            SearchRecipes recipes = HttpRequestUtilities.searchRecipes(ingredients, dietRestrictions,
+                    allergyRestrictions, startPosition);
+            for (Matches match : recipes.matches) {
+                recipesList.add(match);
+            }
+            return recipes;
+        }
+
+        @Override
+        protected void onPostExecute(final SearchRecipes params) {
+            List<String> names = new ArrayList<String>();
+            for (Matches m : recipesList) {
+                names.add(m.recipeName);
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    getActivity(), android.R.layout.simple_list_item_1,
+                    names);
+            setListAdapter(adapter);
+            progress.dismiss();
+        }
     }
 }
