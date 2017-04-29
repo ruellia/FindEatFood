@@ -36,8 +36,8 @@
         app:met_floatingLabelPadding="2dp"
 
         app:met_primaryColor="@color/orange"
-        app:met_textColor="@color/white"
-        app:met_textColorHint="@color/orange"
+        app:met_textColor="#ffffff"
+        app:met_textColorHint="#cccccc"
         app:met_floatingLabelTextColor="@color/orange" />
 
     <RelativeLayout
