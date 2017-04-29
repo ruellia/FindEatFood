@@ -13,26 +13,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/cutting_board_port"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="center"/>
 
-    <TextView style="@style/header_style"
-        android:text="@string/your_ingredients"
-        />
+    <TextView
+        style="@style/header_style"
+        android:text="@string/your_ingredients" />
 
-    <EditText style="@style/inputTextStyle"
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/addIngredientET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/add_ingredient"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="140dp"
-                />
+        android:textCursorDrawable="@drawable/cursor_white"
+        android:hint="@string/add_ingredient"
+        android:textSize="20dp"
+
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="@string/add_ingredient"
+        app:met_floatingLabelTextSize="13sp"
+        app:met_floatingLabelPadding="2dp"
+
+        app:met_primaryColor="@color/orange"
+        app:met_textColor="@color/white"
+        app:met_textColorHint="@color/orange"
+        app:met_floatingLabelTextColor="@color/orange" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp">
+        android:layout_margin="15dp">
 
         <Button style="@style/buttonStyle"
             android:id="@+id/dietaryActivityB"

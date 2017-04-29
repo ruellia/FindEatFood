@@ -3,13 +3,14 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="dietary_restrictions">Dietary Restrictions</string>
 
-    // Ingredient Activity
+    <!-- Ingredients Fragment -->
     <string name="your_ingredients">Recipe Search</string>
     <string name="add">Add</string>
-    <string name="add_ingredient">Add Ingredients</string>
+    <string name="add_ingredient">Add Ingredients (tomatoes, basil, etc.)</string>
     <string name="next_button">Next</string>
     <string name="error_ingredient">You must enter at least one ingredient!</string>
 
+    <!-- Dietary Fragment -->
     <string-array name="dietOptionsName">
         <item>Lacto vegetarian</item>
         <item>Ovo vegetarian</item>
