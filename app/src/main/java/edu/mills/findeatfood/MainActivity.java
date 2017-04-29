@@ -9,13 +9,21 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends Activity
         implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener {
@@ -26,6 +34,10 @@ public class MainActivity extends Activity
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private int currentPosition = 0;
+    private String[] ingredients;
+    public static final String INGREDIENTS = "ingredients";
+    public static final String DIET_RESTRICTIONS = "dietRestrictions";
+    public static final String ALLERGY_RESTRICTIONS = "allergyRestrictions";
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -65,10 +77,20 @@ public class MainActivity extends Activity
         public void onBackStackChanged() {
             FragmentManager fragMan = getFragmentManager();
             Fragment fragment = fragMan.findFragmentByTag("visible_fragment");
+
             if (fragment instanceof HomeFragment) {
                 currentPosition = 0;
             }
             if (fragment instanceof IngredientsFragment) {
+                currentPosition = 1;
+            }
+            if (fragment instanceof DietaryFragment) {
+                currentPosition = 1;
+            }
+            if (fragment instanceof ResultsFragment) {
+                currentPosition = 1;
+            }
+            if (fragment instanceof RecipeDetailFragment) {
                 currentPosition = 1;
             }
             if (fragment instanceof FindDealsFragment) {
@@ -209,7 +231,54 @@ public class MainActivity extends Activity
     }
 
     public void onResultsClicked(View v) {
+        String[] dietaryOptionsName = getResources().getStringArray(R.array.dietOptionsName);
+        String[] dietaryOptionsCode = getResources().getStringArray(R.array.dietOptionsCode);
+        String[] allergyOptionsName = getResources().getStringArray(R.array.allergyOptionsName);
+        String[] allergyOptionsCode = getResources().getStringArray(R.array.allergyOptionsCode);
+
+        HashMap<String, String> restrictionsHashMap = new HashMap<String, String>();
+        for (int i = 0; i < dietaryOptionsCode.length; i++) {
+            restrictionsHashMap.put(dietaryOptionsName[i], dietaryOptionsCode[i]);
+        }
+
+        for (int i = 0; i < allergyOptionsCode.length; i++) {
+            restrictionsHashMap.put(allergyOptionsName[i], allergyOptionsCode[i]);
+        }
+
+        int dietCheckBoxes =
+                getResources().getStringArray(R.array.dietOptionsName).length;
+        int allergyCheckBoxes =
+                getResources().getStringArray(R.array.allergyOptionsName).length;
+        LinearLayout dietaryOptions = (LinearLayout) findViewById(R.id.dietaryOptionsLayout);
+        ArrayList<String> dietRestrictions = new ArrayList<String>();
+        ArrayList<String> allergyRestrictions = new ArrayList<String>();
+
+        for (int i = 0; i < dietCheckBoxes; i++) {
+            CheckBox cb =
+                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.dietOptionsIds.get(i));
+            if (cb != null && cb.isChecked()) {
+                String cbName = cb.getText().toString();
+                String cbCode = (String) restrictionsHashMap.get(cbName);
+                dietRestrictions.add(cbCode);
+            }
+        }
+
+        for (int j = 0; j < allergyCheckBoxes; j++) {
+            CheckBox cb =
+                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.allergyOptionsIds.get(j));
+            if (cb != null && cb.isChecked()) {
+                String cbName = cb.getText().toString();
+                String cbCode = (String) restrictionsHashMap.get(cbName);
+                allergyRestrictions.add(cbCode);
+            }
+        }
+
+        Bundle recipeBundle = new Bundle();
+        recipeBundle.putStringArray(INGREDIENTS, ingredients);
+        recipeBundle.putStringArrayList(DIET_RESTRICTIONS, dietRestrictions);
+        recipeBundle.putStringArrayList(ALLERGY_RESTRICTIONS, allergyRestrictions);
         ResultsFragment resultsFrag = new ResultsFragment();
+        resultsFrag.setArguments(recipeBundle);
         doFragTransaction(resultsFrag);
     }
 
@@ -219,14 +288,23 @@ public class MainActivity extends Activity
     }
 
     public void onDietaryClicked(View v) {
-        DietaryFragment dietaryFrag = new DietaryFragment();
-        doFragTransaction(dietaryFrag);
-
-/*        EditText addIngredientET = (EditText) view.findViewById(R.id.addIngredientET);
-
+        Log.d("MainActivity", "onDietaryClicked");
+        EditText addIngredientET = (EditText) findViewById(R.id.addIngredientET);
         if (addIngredientET.getText().toString().equals("")) {
-            Toast.makeText(getActivity().getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
-        }*/
+            Toast.makeText(getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
+        } else {
+            DietaryFragment dietaryFrag = new DietaryFragment();
+            doFragTransaction(dietaryFrag);
+            setIngredients(parseIngredientInput(addIngredientET.getText().toString()));
+        }
+    }
+
+    private void setIngredients(String[] ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    private String[] parseIngredientInput(String ingredients) {
+        return ingredients.split("\\s*,\\s*");
     }
 
     @Override
@@ -236,16 +314,20 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void onRecipeClicked(long id) {
+    public void onRecipeClicked(String recipeId) {
+        Bundle toPass = new Bundle();
+        toPass.putString("recipeId", recipeId);
         RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
+        detailsFrag.setArguments(toPass);
         doFragTransaction(detailsFrag);
     }
 
     // helper function
-    private void doFragTransaction (Fragment fragment) {
+    private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, fragment);
+        fragTransaction.replace(R.id.content_frame, fragment, "visible_fragment");
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
+
 }

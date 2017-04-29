@@ -1,58 +1,73 @@
 package edu.mills.findeatfood;
 
 import android.app.Fragment;
-import android.database.sqlite.SQLiteDatabase;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.Toast;
+
+import android.widget.Button;
+import android.widget.TextView;
+
+import edu.mills.findeatfood.models.Recipe;
 
 public class RecipeDetailFragment extends Fragment {
-    private long recipeDetailId;
-    private String recipeDetailString = "recipeDetailId";
-    private boolean pressedTwiceToUnfavorite = false;
+
+    private ProgressDialog progress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            recipeDetailId = savedInstanceState.getLong(recipeDetailString);
+        Bundle argumentData = getArguments();
+        new GetRecipeTask().execute(argumentData.getString("recipeId"));
+        return inflater.inflate(R.layout.fragment_recipe_detail, container, false);
+    }
+
+    private class GetRecipeTask extends AsyncTask<String, Void, Recipe> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progress = new ProgressDialog(getActivity());
+            progress.setMessage("Getting the latest version of your recipe.");
+            progress.setTitle("Loading...");
+            progress.setIndeterminate(false);
+            progress.setCancelable(true);
+            progress.show();
         }
-        View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
-        configureImageButton(view);
-        return view;
-    }
 
-    private void configureImageButton(View view){
-        CheckBox favoriteChecked = (CheckBox) view.findViewById(R.id.favorite_checkbox);
+        @Override
+        protected Recipe doInBackground(String... params) {
+            return HttpRequestUtilities.getRecipe(params[0]);
+        }
 
-        favoriteChecked.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-
-                if(!pressedTwiceToUnfavorite) {
-                    pressedTwiceToUnfavorite = true;
-                    Toast.makeText(getActivity(), "You favorited the recipe", Toast.LENGTH_SHORT).show();
-                    SQLiteDatabase db = new SQLiteRecipeOpenHelper(getActivity()).getWritableDatabase();
-                    RecipeDatabaseUtilities.insertRecipe(db, recipeDetailString, " " + recipeDetailId);
-                    return;
-                }else{
-                    pressedTwiceToUnfavorite = false;
-                    Toast.makeText(getActivity(), "You unfavorited the recipe", Toast.LENGTH_SHORT).show();
+        @Override
+        //TODO: populate image
+        protected void onPostExecute(final Recipe params) {
+            progress.dismiss();
+            TextView name = (TextView) getActivity().findViewById(R.id.recipe_name);
+            name.setText(params.name);
+            TextView prepTime = (TextView) getActivity().findViewById(R.id.recipe_prep_time);
+            prepTime.setText(params.totalTime);
+            TextView ingredients = (TextView) getActivity().findViewById(R.id.recipe_ingredients);
+            String joined = TextUtils.join("\n", params.ingredientLines);
+            ingredients.setText(joined);
+            TextView rating = (TextView) getActivity().findViewById(R.id.rating);
+            rating.setText("Rating: " + params.rating);
+            Button directionsButton = (Button) getActivity().findViewById(R.id.recipe_instructions);
+            directionsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(params.getSourceURL()));
+                    startActivity(browserIntent);
                 }
-            }
-        });
+            });
+        }
     }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putLong(recipeDetailString, recipeDetailId);
-    }
-
-    public void setRecipeId(long id) {
-        this.recipeDetailId = id;
-    }
-
 }
+

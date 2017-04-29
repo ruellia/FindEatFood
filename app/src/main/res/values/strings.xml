@@ -10,12 +10,48 @@
     <string name="next_button">Next</string>
     <string name="error_ingredient">You must enter at least one ingredient!</string>
 
-    <string-array name="dietaryOptions">
+    <string-array name="dietOptionsName">
+        <item>Lacto vegetarian</item>
+        <item>Ovo vegetarian</item>
+        <item>Pescetarian</item>
         <item>Vegan</item>
-        <item>Pescatarian</item>
-        <item>No Nuts</item>
-        <item>Lactose Intolerant</item>
-        <item>No Gluten</item>
+        <item>Lacto-ovo vegetarian</item>
+        <item>Paleo</item>
+    </string-array>
+
+    <string-array name="allergyOptionsName">
+        <item>Gluten-Free</item>
+        <item>Peanut-Free</item>
+        <item>Seafood-Free</item>
+        <item>Sesame-Free</item>
+        <item>Soy-Free</item>
+        <item>Dairy-Free</item>
+        <item>Egg-Free</item>
+        <item>Sulfite-Free</item>
+        <item>Tree Nut-Free</item>
+        <item>Wheat-Free</item>
+    </string-array>
+
+    <string-array name="dietOptionsCode">
+        <item>388^Lacto vegetarian</item>
+        <item>389^Ovo vegetarian</item>
+        <item>390^Pescetarian</item>
+        <item>386^Vegan </item>
+        <item>387^Lacto-ovo vegetarian</item>
+        <item>403^Paleo</item>
+    </string-array>
+
+    <string-array name="allergyOptionsCode">
+        <item>393^Gluten-Free</item>
+        <item>394^Peanut-Free</item>
+        <item>398^Seafood-Free</item>
+        <item>399^Sesame-Free</item>
+        <item>400^Soy-Free</item>
+        <item>396^Dairy-Free</item>
+        <item>397^Egg-Free</item>
+        <item>401^Sulfite-Free</item>
+        <item>395^Tree Nut-Free</item>
+        <item>392^Wheat-Free</item>
     </string-array>
 
     <!-- Navdrawer items -->
@@ -40,15 +76,5 @@
     <string name="edit">Edit</string>
 
     <string name="recipe_detail">Recipe Detail</string>
-    <string name="recipe_detail_information">
-        Ingredients\n
-    1 pound ground beef\n
-    1 envelope taco seasoning\n
-    1 can (16 ounces) refried beans\n
-    6 flour tortillas (12 inches), warmed\n
-    1 cup (4 ounces) shredded Colby-Monterey Jack cheese\n
-    4 teaspoons canola oil\n
-    Sour cream and salsa\n
-    </string>
 
 </resources>
