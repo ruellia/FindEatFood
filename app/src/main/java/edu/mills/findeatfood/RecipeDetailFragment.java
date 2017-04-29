@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.List;
-
 import edu.mills.findeatfood.models.Recipe;
 
 public class RecipeDetailFragment extends Fragment {
@@ -55,11 +52,8 @@ public class RecipeDetailFragment extends Fragment {
             name.setText(params.name);
             TextView prepTime = (TextView) getActivity().findViewById(R.id.recipe_prep_time);
             prepTime.setText(params.totalTime);
-            String[] temp = {"A", "b", "c",  "A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c","A", "b", "c"};
-            List<String> test = Arrays.asList(temp);
-            String joined = TextUtils.join("\n", temp);
             TextView ingredients = (TextView) getActivity().findViewById(R.id.recipe_ingredients);
-            //String joined = TextUtils.join("\n", params.ingredientLines);
+            String joined = TextUtils.join("\n", params.ingredientLines);
             ingredients.setText(joined);
             TextView rating = (TextView) getActivity().findViewById(R.id.rating);
             rating.setText("Rating: " + params.rating);

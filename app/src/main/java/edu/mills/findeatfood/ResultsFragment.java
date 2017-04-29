@@ -23,23 +23,21 @@ public class ResultsFragment extends ListFragment {
 
     private ResultsListListener listener;
     private List<Matches> recipesList = new ArrayList<Matches>();
+    private List<String> ingredients = new ArrayList<String>();
+    private List<String> dietRestrictions = new ArrayList<String>();
+    private List<String> allergyRestrictions = new ArrayList<String>();
     private ProgressDialog progress;
     private int startPosition;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        // mock data
-        List<String> ingredients = Arrays.asList(new String[]{"garlic"});
-        List<String> diets = Arrays.asList(new String[]{"390^Pescetarian", "388^Lacto vegetarian"});
-        List<String> allergies = Arrays.asList(new String[]{"393^Gluten-Free"});
-        // api call
-        new GetRecipeTask().execute(new AsyncParams(ingredients, diets, allergies, startPosition));
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Bundle recipeBundle = getArguments();
+        dietRestrictions = recipeBundle.getStringArrayList(MainActivity.DIET_RESTRICTIONS);
+        allergyRestrictions = recipeBundle.getStringArrayList(MainActivity.ALLERGY_RESTRICTIONS);
+        ingredients = Arrays.asList(recipeBundle.getStringArray(MainActivity.INGREDIENTS));
+        new SearchRecipesTask().execute();
+
         return inflater.inflate(R.layout.results, container, false);
     }
 
@@ -52,15 +50,12 @@ public class ResultsFragment extends ListFragment {
             public void onClick(View v)
             {
                 startPosition += 10;
-                // mock data
-                List<String> ingredients = Arrays.asList(new String[]{"garlic"});
-                List<String> diets = Arrays.asList(new String[]{"390^Pescetarian", "388^Lacto vegetarian"});
-                List<String> allergies = Arrays.asList(new String[]{"393^Gluten-Free"});
-                new GetRecipeTask().execute(new AsyncParams(ingredients, diets, allergies, startPosition));
+                new SearchRecipesTask().execute();;
             }
         });
         super.onActivityCreated(savedInstanceState);
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -78,7 +73,7 @@ public class ResultsFragment extends ListFragment {
         void onRecipeClicked(String recipeId);
     }
 
-    private class GetRecipeTask extends AsyncTask<AsyncParams, Void, SearchRecipes> {
+    private class SearchRecipesTask extends AsyncTask<Void, Void, SearchRecipes> {
 
         @Override
         protected void onPreExecute() {
@@ -92,12 +87,13 @@ public class ResultsFragment extends ListFragment {
         }
 
         @Override
-        protected SearchRecipes doInBackground(AsyncParams... params) {
-            SearchRecipes recipes = HttpRequestUtilities.searchRecipes(params[0].ingredients, params[0].diets, params[0].allergies, params[0].startPosition);
+        protected SearchRecipes doInBackground(Void... params) {
+            SearchRecipes recipes = HttpRequestUtilities.searchRecipes(ingredients, dietRestrictions,
+                    allergyRestrictions, startPosition);
             for (Matches match : recipes.matches) {
                 recipesList.add(match);
             }
-            return HttpRequestUtilities.searchRecipes(params[0].ingredients, params[0].diets, params[0].allergies, params[0].startPosition);
+            return recipes;
         }
 
         @Override
@@ -111,20 +107,6 @@ public class ResultsFragment extends ListFragment {
                     names);
             setListAdapter(adapter);
             progress.dismiss();
-        }
-    }
-
-    private class AsyncParams {
-        public List<String> ingredients;
-        public List<String> diets;
-        public List<String> allergies;
-        public int startPosition;
-
-        public AsyncParams(List<String> ingredients, List<String> diets, List<String> allergies, int startPosition) {
-            this.ingredients = ingredients;
-            this.diets = diets;
-            this.allergies = allergies;
-            this.startPosition = startPosition;
         }
     }
 }
