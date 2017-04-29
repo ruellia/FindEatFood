@@ -14,7 +14,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class FavoritesFragment extends ListFragment {
 
