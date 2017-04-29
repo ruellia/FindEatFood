@@ -15,9 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-
 import android.widget.TextView;
-
 
 import com.bumptech.glide.Glide;
 
@@ -37,7 +35,7 @@ public class RecipeDetailFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_recipe_detail, container, false);
     }
 
-    private class RecipeWrapper{
+    private class RecipeWrapper {
         public Recipe recipe;
         public Cursor recipeCursor;
     }
@@ -58,7 +56,7 @@ public class RecipeDetailFragment extends Fragment {
         @Override
         protected RecipeWrapper doInBackground(String... params) {
             db = new SQLiteRecipeOpenHelper(getActivity()).getWritableDatabase();
-            Recipe recipe = HttpRequestUtilities.getRecipe(params[0]);
+            recipe = HttpRequestUtilities.getRecipe(params[0]);
             RecipeWrapper recipeWrapper = new RecipeWrapper();
             recipeWrapper.recipe = recipe;
             recipeWrapper.recipeCursor = RecipeDatabaseUtilities.searchForRecipe(db, recipe.id);
@@ -92,8 +90,6 @@ public class RecipeDetailFragment extends Fragment {
                     startActivity(browserIntent);
                 }
             });
-
-
             final CheckBox favoritesCB = (CheckBox) getView().findViewById(R.id.favorite_checkbox);
             if (recipeWrapper.recipeCursor.moveToNext()) {
                 if ((recipeWrapper.recipe.id).equals(recipeWrapper.recipeCursor.getString(1))) {
