@@ -1,34 +1,21 @@
 package edu.mills.findeatfood;
 
 import android.app.Fragment;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
-<<<<<<< HEAD
-import android.media.Image;
-=======
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
->>>>>>> checkbox is now checked if recipe is in db
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.Button;
-<<<<<<< HEAD
-import android.widget.ImageView;
-=======
 import android.widget.CheckBox;
->>>>>>> checkbox is now checked if recipe is in db
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.sql.Wrapper;
 
 import com.bumptech.glide.Glide;
 
@@ -38,6 +25,8 @@ public class RecipeDetailFragment extends Fragment {
 
     private ProgressDialog progress;
     private SQLiteDatabase db;
+    private Recipe recipe;
+    Boolean favoritesCBVal = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +35,7 @@ public class RecipeDetailFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_recipe_detail, container, false);
     }
 
-    private class RecipeWrapper{
+    private class RecipeWrapper {
         public Recipe recipe;
         public Cursor recipeCursor;
     }
@@ -67,7 +56,7 @@ public class RecipeDetailFragment extends Fragment {
         @Override
         protected RecipeWrapper doInBackground(String... params) {
             db = new SQLiteRecipeOpenHelper(getActivity()).getWritableDatabase();
-            Recipe recipe = HttpRequestUtilities.getRecipe(params[0]);
+            recipe = HttpRequestUtilities.getRecipe(params[0]);
             RecipeWrapper recipeWrapper = new RecipeWrapper();
             recipeWrapper.recipe = recipe;
             recipeWrapper.recipeCursor = RecipeDatabaseUtilities.searchForRecipe(db, recipe.id);
@@ -102,14 +91,46 @@ public class RecipeDetailFragment extends Fragment {
                 }
             });
 
-            CheckBox favoriteCB = (CheckBox) getView().findViewById(R.id.favorite_checkbox);
-            if(recipeWrapper.recipeCursor.moveToNext()){
-                if((recipeWrapper.recipe.id).equals(recipeWrapper.recipeCursor.getString(1))){
-                    favoriteCB.setChecked(true);
-                }else{
+            final CheckBox favoritesCB = (CheckBox) getView().findViewById(R.id.favorite_checkbox);
+            if (recipeWrapper.recipeCursor.moveToNext()) {
+                if ((recipeWrapper.recipe.id).equals(recipeWrapper.recipeCursor.getString(1))) {
+                    favoritesCBVal = true;
+                    favoritesCB.setChecked(favoritesCBVal);
                 }
-            }else{
             }
+            favoritesCB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (favoritesCB.isChecked()) {
+                        if (favoritesCBVal) {
+                            //do nothing because recipe is already in db
+                        }
+                        new InsertRecipeTask().execute();
+                        favoritesCBVal = true;
+                    } else {
+                        if (favoritesCBVal) {
+                            new DeleteRecipeTask().execute();
+                            favoritesCBVal = false;
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    private class InsertRecipeTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            RecipeDatabaseUtilities.insertRecipe(db, recipe.name, recipe.id);
+            return null;
+        }
+    }
+
+    private class DeleteRecipeTask extends AsyncTask<Void, Void, Cursor> {
+        @Override
+        protected Cursor doInBackground(Void... voids) {
+            RecipeDatabaseUtilities.deleteRecipe(db, recipe.id);
+            return null;
         }
     }
 }

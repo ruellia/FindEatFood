@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class FavoritesFragment extends ListFragment {
 
@@ -25,16 +27,7 @@ public class FavoritesFragment extends ListFragment {
                              Bundle savedInstanceState) {
         recipes = new ArrayList<String>();
         recipeIds = new ArrayList<String>();
-        SQLiteDatabase db = new SQLiteRecipeOpenHelper(getActivity()).getReadableDatabase();
-        Cursor getAllRecipesCursor = RecipeDatabaseUtilities.getAllRecipes(db);
-        while (getAllRecipesCursor.moveToNext()) {
-            recipes.add(getAllRecipesCursor.getString(0));
-            recipeIds.add(getAllRecipesCursor.getString(1));
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                inflater.getContext(), android.R.layout.simple_list_item_1,
-                recipes);
-        setListAdapter(adapter);
+        new GetAllFavoriteRecipesTask().execute();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -48,6 +41,28 @@ public class FavoritesFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (listener != null) {
             listener.onRecipeClicked(recipeIds.get(position));
+        }
+    }
+
+    private class GetAllFavoriteRecipesTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... Void) {
+            SQLiteDatabase db = new SQLiteRecipeOpenHelper(getActivity()).getReadableDatabase();
+            Cursor getAllRecipesCursor = RecipeDatabaseUtilities.getAllRecipes(db);
+            while (getAllRecipesCursor.moveToNext()) {
+                recipes.add(getAllRecipesCursor.getString(0));
+                recipeIds.add(getAllRecipesCursor.getString(1));
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void params) {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    getActivity().getApplicationContext(), android.R.layout.simple_list_item_1,
+                    recipes);
+            setListAdapter(adapter);
         }
     }
 }

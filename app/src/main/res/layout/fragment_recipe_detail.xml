@@ -103,7 +103,7 @@
                 android:layout_weight="0.41"
                 android:id="@+id/favorite_checkbox"
                 android:background="@android:color/transparent"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true" />
 
         </RelativeLayout>
 
