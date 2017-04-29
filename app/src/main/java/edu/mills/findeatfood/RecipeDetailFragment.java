@@ -1,8 +1,10 @@
 package edu.mills.findeatfood;
 
 import android.app.Fragment;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,8 +12,12 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import edu.mills.findeatfood.models.Recipe;
 
@@ -57,6 +63,12 @@ public class RecipeDetailFragment extends Fragment {
             ingredients.setText(joined);
             TextView rating = (TextView) getActivity().findViewById(R.id.rating);
             rating.setText("Rating: " + params.rating);
+
+            ImageView recipeIV = (ImageView) getActivity().findViewById(R.id.recipeIV);
+            Glide.with(getActivity()).load(params.getImageURL())
+                    .centerCrop()
+                    .into(recipeIV);
+
             Button directionsButton = (Button) getActivity().findViewById(R.id.recipe_instructions);
             directionsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -68,3 +80,4 @@ public class RecipeDetailFragment extends Fragment {
         }
     }
 }
+

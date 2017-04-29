@@ -30,6 +30,10 @@ public final class Recipe {
     public String getSourceURL() {
         return source.sourceRecipeUrl;
     }
+
+    public String getImageURL() {
+        return images.get(0). hostedLargeUrl;
+    }
 }
 
 class Images {

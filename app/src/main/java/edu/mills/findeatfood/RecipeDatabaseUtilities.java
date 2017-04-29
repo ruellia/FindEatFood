@@ -31,4 +31,25 @@ public final class RecipeDatabaseUtilities {
                 null);
     }
 
+    public static Cursor searchForRecipe(SQLiteDatabase db,
+                                         String recipeId){
+        return db.query(SQLiteRecipeOpenHelper.RECIPE_TABLE,
+                new String[]{SQLiteRecipeOpenHelper.RECIPE_NAME_COL,
+                SQLiteRecipeOpenHelper.RECIPE_ID_COL},
+                SQLiteRecipeOpenHelper.RECIPE_ID_COL + " = ?",
+                new String[]{recipeId},
+                null,
+                null,
+                null);
+    }
+
+    public static void deleteRecipe(SQLiteDatabase db,
+                                    String recipeId){
+        db.delete(SQLiteRecipeOpenHelper.RECIPE_TABLE,
+                SQLiteRecipeOpenHelper.RECIPE_ID_COL + " = ?",
+                new String[]{recipeId});
+    }
+
+
+
 }
