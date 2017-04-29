@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:padding="5dp"
     android:orientation="vertical">
 
     <ListView
@@ -9,12 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        />
+        android:padding="5dp"/>
 
         <Button style="@style/buttonStyle2"
             android:id="@+id/seeMoreButton"
-            android:text="@string/see_more"
-            />
+            android:text="@string/see_more" />
 
         <Button style="@style/buttonStyle2"
             android:id="@+id/EditButton"
