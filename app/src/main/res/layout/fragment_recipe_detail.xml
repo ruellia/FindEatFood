@@ -22,72 +22,76 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <TextView
-            android:id="@+id/recipe_name"
+        <LinearLayout
+            android:id="@+id/linearlayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" />
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/recipeIV"
+            android:orientation="horizontal"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
-        <CheckBox
-            android:id="@+id/favorite_checkbox"
-            android:button="@android:drawable/btn_star"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.41"
-            android:background="@android:color/transparent"
-            android:layout_alignParentRight="true"
-            android:textSize="25dp"/>
+            <TextView
+                android:id="@+id/recipe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
+
+            <CheckBox
+                android:id="@+id/favorite_checkbox"
+                android:button="@android:drawable/btn_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".04"
+                android:background="@android:color/transparent"
+                android:layout_alignParentRight="true"
+                android:textSize="25dp"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearlayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/favorite_checkbox">
+            android:layout_below="@+id/linearlayout1"
+            android:layout_margin="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <TextView style="@style/small_text"
                 android:id="@+id/recipe_prep_time"
-                android:gravity="left|center_vertical"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="40dp"
-                android:textColor="#ffffff"/>
+                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rating"
-                android:gravity="right|center_vertical"
-                android:layout_below="@+id/recipe_prep_time"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="11dp"
-                android:textColor="#ffffff"/>
+            <TextView style="@style/small_text"
+                android:id="@+id/rating" />
 
-        </RelativeLayout>
+        </LinearLayout>
+
+
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/recipeIV"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/linearlayout2"
             android:layout_above="@+id/relativeLayout">
 
             <TextView
                 android:id="@+id/recipe_ingredients"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="1dp"
+                android:textSize="20dp"
                 android:gravity="left"
                 android:textColor="#ffffff"
                 android:layout_alignRight="@+id/recipe_name"
@@ -95,12 +99,14 @@
 
         </ScrollView>
 
+
         <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
-            android:id="@+id/relativeLayout">
+            android:layout_marginTop="10dp"
+            >
 
             <Button style="@style/buttonStyle"
                 android:layout_width="match_parent"
