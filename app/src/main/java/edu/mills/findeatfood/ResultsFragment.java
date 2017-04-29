@@ -30,14 +30,18 @@ public class ResultsFragment extends ListFragment {
     private int startPosition;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         Bundle recipeBundle = getArguments();
         dietRestrictions = recipeBundle.getStringArrayList(MainActivity.DIET_RESTRICTIONS);
         allergyRestrictions = recipeBundle.getStringArrayList(MainActivity.ALLERGY_RESTRICTIONS);
         ingredients = Arrays.asList(recipeBundle.getStringArray(MainActivity.INGREDIENTS));
         new SearchRecipesTask().execute();
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         return inflater.inflate(R.layout.results, container, false);
     }
 
