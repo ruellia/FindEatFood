@@ -13,8 +13,6 @@
         android:weightSum="1"
         android:background="#000000">
 
-
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,7 +34,14 @@
             android:textAllCaps="true"
             android:layout_margin="15dp"
             android:layout_alignParentTop="true"
-            />
+            android:text="RECIPE NAME"/>
+
+        <ImageView
+            android:id="@+id/recipeIV"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -54,7 +59,8 @@
                 android:gravity="left"
                 android:textColor="#ffffff"
                 android:layout_alignRight="@+id/recipe_name"
-                android:layout_alignEnd="@+id/recipe_name" />
+                android:layout_alignEnd="@+id/recipe_name"
+                android:text="INGREDIENTS"/>
         </ScrollView>
 
 
