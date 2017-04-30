@@ -39,16 +39,11 @@ public class RecipeDetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (favoritesCB.isChecked()) {
-                    if (favoritesCBVal) {
-                        //do nothing because recipe is already in db
-                    }
                     new InsertRecipeTask().execute();
                     favoritesCBVal = true;
                 } else {
-                    if (favoritesCBVal) {
-                        new DeleteRecipeTask().execute();
-                        favoritesCBVal = false;
-                    }
+                    new DeleteRecipeTask().execute();
+                    favoritesCBVal = false;
                 }
             }
         });
