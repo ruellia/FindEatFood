@@ -1,5 +1,6 @@
 package edu.mills.findeatfood;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +14,10 @@ import java.util.List;
 
 public class DietaryFragment extends Fragment {
 
-    public static List<Integer> dietOptionsIds = new ArrayList<Integer>();
-    public static List<Integer> allergyOptionsIds = new ArrayList<Integer>();
+    private List<Integer> dietOptionsIds = new ArrayList<Integer>();
+    private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
+
+    OnDietOptionsSelectedListener dietOptionsSelectedListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +49,22 @@ public class DietaryFragment extends Fragment {
             dietaryOptionsLayout.addView(checkBox);
         }
 
+        dietOptionsSelectedListener.onDietOptionsSelected(dietOptionsIds, allergyOptionsIds);
+
         return view;
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            dietOptionsSelectedListener = (OnDietOptionsSelectedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + "must implement OnDietOptionsSelectedListener");
+        }
+    }
+
+    public interface OnDietOptionsSelectedListener {
+        void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds);
+    }
 }
