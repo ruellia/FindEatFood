@@ -27,8 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends Activity
-        implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener
-{
+        implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
 
     private ShareActionProvider shareActionProvider;
     private String[] titles;
@@ -43,16 +42,13 @@ public class MainActivity extends Activity
     private List<Integer> dietOptionsIds = new ArrayList<Integer>();
     private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
 
-    //DietaryFragment.OnDietOptionsSelectedListener dietOptionsSelectedListener;
-
     @Override
-    public void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds)
-    {
+    public void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds) {
         this.dietOptionsIds = dietOptionsIds;
         this.allergyOptionsIds = allergyOptionsIds;
     }
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener{
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //call when item in the drawer is clicked

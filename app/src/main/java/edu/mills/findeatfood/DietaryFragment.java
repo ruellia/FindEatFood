@@ -2,9 +2,7 @@ package edu.mills.findeatfood;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DietaryFragment extends Fragment {
@@ -52,26 +49,22 @@ public class DietaryFragment extends Fragment {
             dietaryOptionsLayout.addView(checkBox);
         }
 
-        //Log.d("DietaryFragment", Arrays.toString(dietOptionsIds.toArray()));
-        //Log.d("DietaryFragment", Arrays.toString(allergyOptionsIds.toArray()));
-        Log.d("DietaryFragment", dietOptionsSelectedListener + " ");
         dietOptionsSelectedListener.onDietOptionsSelected(dietOptionsIds, allergyOptionsIds);
 
         return view;
     }
 
     @Override
-    public void onAttach(Context context)
-    {
-        super.onAttach(context);
-        try{
-            dietOptionsSelectedListener = (OnDietOptionsSelectedListener) context;
-        }catch (ClassCastException e){
-            throw new ClassCastException(context.toString() + "must implement OnDietOptionsSelectedListener");
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            dietOptionsSelectedListener = (OnDietOptionsSelectedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + "must implement OnDietOptionsSelectedListener");
         }
     }
 
-    public interface OnDietOptionsSelectedListener{
+    public interface OnDietOptionsSelectedListener {
         void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds);
     }
 }
