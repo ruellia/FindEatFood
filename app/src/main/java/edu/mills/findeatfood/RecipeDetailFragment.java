@@ -26,13 +26,33 @@ public class RecipeDetailFragment extends Fragment {
     private ProgressDialog progress;
     private SQLiteDatabase db;
     private Recipe recipe;
-    Boolean favoritesCBVal = false;
+    private Boolean favoritesCBVal = false;
+    private CheckBox favoritesCB;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle argumentData = getArguments();
+        View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
         new GetRecipeTask().execute(argumentData.getString("recipeId"));
-        return inflater.inflate(R.layout.fragment_recipe_detail, container, false);
+        favoritesCB = (CheckBox) view.findViewById(R.id.favorite_checkbox);
+        favoritesCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (favoritesCB.isChecked()) {
+                    if (favoritesCBVal) {
+                        //do nothing because recipe is already in db
+                    }
+                    new InsertRecipeTask().execute();
+                    favoritesCBVal = true;
+                } else {
+                    if (favoritesCBVal) {
+                        new DeleteRecipeTask().execute();
+                        favoritesCBVal = false;
+                    }
+                }
+            }
+        });
+        return view;
     }
 
     private class RecipeWrapper {
@@ -64,7 +84,6 @@ public class RecipeDetailFragment extends Fragment {
         }
 
         @Override
-        //TODO: populate image
         protected void onPostExecute(final RecipeWrapper recipeWrapper) {
             progress.dismiss();
             TextView name = (TextView) getActivity().findViewById(R.id.recipe_name);
@@ -90,28 +109,10 @@ public class RecipeDetailFragment extends Fragment {
                     startActivity(browserIntent);
                 }
             });
-            final CheckBox favoritesCB = (CheckBox) getView().findViewById(R.id.favorite_checkbox);
             if (recipeWrapper.isRecipeInDB) {
-                    favoritesCBVal = true;
-                    favoritesCB.setChecked(favoritesCBVal);
+                favoritesCBVal = true;
+                favoritesCB.setChecked(favoritesCBVal);
             }
-            favoritesCB.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (favoritesCB.isChecked()) {
-                        if (favoritesCBVal) {
-                            //do nothing because recipe is already in db
-                        }
-                        new InsertRecipeTask().execute();
-                        favoritesCBVal = true;
-                    } else {
-                        if (favoritesCBVal) {
-                            new DeleteRecipeTask().execute();
-                            favoritesCBVal = false;
-                        }
-                    }
-                }
-            });
         }
     }
 
