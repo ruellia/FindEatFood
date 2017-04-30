@@ -24,9 +24,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends Activity
-        implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener {
+        implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener
+{
 
     private ShareActionProvider shareActionProvider;
     private String[] titles;
@@ -38,8 +40,19 @@ public class MainActivity extends Activity
     public static final String INGREDIENTS = "ingredients";
     public static final String DIET_RESTRICTIONS = "dietRestrictions";
     public static final String ALLERGY_RESTRICTIONS = "allergyRestrictions";
+    private List<Integer> dietOptionsIds = new ArrayList<Integer>();
+    private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+    //DietaryFragment.OnDietOptionsSelectedListener dietOptionsSelectedListener;
+
+    @Override
+    public void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds)
+    {
+        this.dietOptionsIds = dietOptionsIds;
+        this.allergyOptionsIds = allergyOptionsIds;
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener{
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //call when item in the drawer is clicked
@@ -255,7 +268,7 @@ public class MainActivity extends Activity
 
         for (int i = 0; i < dietCheckBoxes; i++) {
             CheckBox cb =
-                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.dietOptionsIds.get(i));
+                    (CheckBox) dietaryOptions.findViewById(dietOptionsIds.get(i));
             if (cb != null && cb.isChecked()) {
                 String cbName = cb.getText().toString();
                 String cbCode = (String) restrictionsHashMap.get(cbName);
@@ -265,7 +278,7 @@ public class MainActivity extends Activity
 
         for (int j = 0; j < allergyCheckBoxes; j++) {
             CheckBox cb =
-                    (CheckBox) dietaryOptions.findViewById(DietaryFragment.allergyOptionsIds.get(j));
+                    (CheckBox) dietaryOptions.findViewById(allergyOptionsIds.get(j));
             if (cb != null && cb.isChecked()) {
                 String cbName = cb.getText().toString();
                 String cbCode = (String) restrictionsHashMap.get(cbName);
