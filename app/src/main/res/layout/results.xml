@@ -14,7 +14,9 @@
         android:layout_margin="15dp"
         android:fadeScrollbars="false"
         android:scrollbarThumbVertical="@color/greenery"
-        android:scrollbarSize="3dp"/>
+        android:scrollbarSize="3dp"
+        android:divider="@color/smoked_white"
+        android:dividerHeight="1px" />
 
     <Button
         android:id="@+id/seeMoreButton"
