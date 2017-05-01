@@ -59,7 +59,7 @@ public class FavoritesFragment extends ListFragment {
         @Override
         protected void onPostExecute(Void params) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getActivity().getApplicationContext(), android.R.layout.simple_list_item_1,
+                    getActivity().getApplicationContext(), R.layout.row, android.R.id.text1,
                     recipes);
             setListAdapter(adapter);
         }

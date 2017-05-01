@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000000"
+    android:background="@color/black"
     android:fillViewport="true"
+    android:padding="5dp"
     tools:context="edu.mills.findeatfood.RecipeDetailFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1"
-        android:layout_margin="20dp">
+        android:weightSum="1">
 
         <ImageView
             android:layout_width="match_parent"
@@ -43,7 +43,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-
             <CheckBox
                 android:id="@+id/favorite_checkbox"
                 android:button="@android:drawable/btn_star"
@@ -65,11 +64,12 @@
             android:layout_below="@+id/linearlayout1"
             android:layout_margin="10dp">
 
-            <TextView style="@style/small_text"
-                android:id="@+id/recipe_prep_time"
-                />
+            <TextView
+                style="@style/small_text"
+                android:id="@+id/recipe_prep_time" />
 
-            <TextView style="@style/small_text"
+            <TextView
+                style="@style/small_text"
                 android:id="@+id/rating" />
 
         </LinearLayout>
@@ -78,9 +78,11 @@
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="15dp"
             android:paddingBottom="10dp"
+            android:fadeScrollbars="false"
+            android:scrollbarThumbVertical="@color/greenery"
+            android:scrollbarSize="3dp"
             android:layout_below="@+id/linearlayout2"
             android:layout_above="@+id/relativeLayout">
 
@@ -88,32 +90,30 @@
                 android:id="@+id/recipe_ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:paddingBottom="20dp"
                 android:lineSpacingExtra="1dp"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:gravity="left"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:layout_alignRight="@+id/recipe_name"
-                android:layout_alignEnd="@+id/recipe_name" />
-
+                android:layout_alignEnd="@+id/recipe_name"
+                android:text="INGREDIENTS"/>
         </ScrollView>
+
+
 
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
-            >
+            android:layout_alignParentBottom="true">
 
             <Button style="@style/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recipe_instructions"
                 android:text="Directions"
-                android:gravity="center"
                 android:onClick="Link to Recipe URL">
             </Button>
         </RelativeLayout>

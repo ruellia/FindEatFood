@@ -107,7 +107,7 @@ public class ResultsFragment extends ListFragment {
                 names.add(m.recipeName);
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getActivity(), android.R.layout.simple_list_item_1,
+                    getActivity(), R.layout.row, android.R.id.text1,
                     names);
             setListAdapter(adapter);
             progress.dismiss();

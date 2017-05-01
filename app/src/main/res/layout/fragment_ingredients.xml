@@ -4,53 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="#000000"
     tools:context="edu.mills.findeatfood.IngredientsFragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/cutting_board_port"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:background="@drawable/cutting_board_port" />
 
     <TextView
         style="@style/header_style"
         android:text="@string/your_ingredients" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
+        style="@style/edittext_style"
         android:id="@+id/addIngredientET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="140dp"
-        android:textCursorDrawable="@drawable/cursor_white"
-        android:hint="@string/add_ingredient"
-        android:textSize="20dp"
-
         app:met_floatingLabel="highlight"
-        app:met_floatingLabelText="@string/add_ingredient"
-        app:met_floatingLabelTextSize="13sp"
         app:met_floatingLabelPadding="2dp"
+        app:met_floatingLabelText="@string/add_ingredient"
+        app:met_floatingLabelTextColor="@color/orange"
 
+        app:met_floatingLabelTextSize="13sp"
         app:met_primaryColor="@color/orange"
-        app:met_textColor="#ffffff"
-        app:met_textColorHint="#cccccc"
-        app:met_floatingLabelTextColor="@color/orange" />
+        app:met_textColor="@color/white"
+        app:met_textColorHint="@color/smoked_white" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="15dp">
+        android:layout_alignParentBottom="true">
 
-        <Button style="@style/buttonStyle"
+        <Button
             android:id="@+id/dietaryActivityB"
+            style="@style/buttonStyle"
             android:text="@string/next_button"
-            android:onClick="onDietaryClicked"
-            ></Button>
+            android:onClick="onDietaryClicked">
+        </Button>
 
     </RelativeLayout>
 

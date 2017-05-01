@@ -3,46 +3,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    android:background="#000000"
+    android:background="@color/black"
     tools:context="edu.mills.findeatfood.DietaryFragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/cutting_board_land"
-        android:layout_gravity="center"
-        />
+        android:background="@drawable/cutting_board_port"
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView style="@style/header_style"
+        <TextView
+            style="@style/header_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/dietary_restrictions" />
-
-        <LinearLayout
-            android:id="@+id/dietaryOptionsLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="20dp">
+            android:layout_marginBottom="15dp">
 
-            <Button style="@style/buttonStyle"
-                android:id="@+id/dietaryButton"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:fadeScrollbars="false"
+                android:scrollbarThumbVertical="@color/greenery"
+                android:scrollbarSize="3dp"
+                android:layout_above="@+id/dietaryButton">
+
+                <LinearLayout
+                    android:id="@+id/dietaryOptionsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </ScrollView>
+
+            <Button
+                style="@style/buttonStyle"
+                android:id="@+id/dietaryButton"
                 android:onClick="onResultsClicked"
                 android:text="@string/find_recipes"
-                android:layout_alignParentBottom="true"/>
+                android:layout_below="@+id/scrollView"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 

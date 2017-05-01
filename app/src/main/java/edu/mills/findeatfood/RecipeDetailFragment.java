@@ -84,7 +84,7 @@ public class RecipeDetailFragment extends Fragment {
             TextView name = (TextView) getActivity().findViewById(R.id.recipe_name);
             name.setText(recipeWrapper.recipe.name);
             TextView prepTime = (TextView) getActivity().findViewById(R.id.recipe_prep_time);
-            prepTime.setText(recipeWrapper.recipe.totalTime);
+            prepTime.setText("Cook Time: " + recipeWrapper.recipe.totalTime);
             TextView ingredients = (TextView) getActivity().findViewById(R.id.recipe_ingredients);
             String joined = TextUtils.join("\n", recipeWrapper.recipe.ingredientLines);
             ingredients.setText(joined);

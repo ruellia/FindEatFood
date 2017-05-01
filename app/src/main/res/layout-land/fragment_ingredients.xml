@@ -4,48 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="#000000"
     tools:context="edu.mills.findeatfood.IngredientsFragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/cutting_board_land"
         android:layout_gravity="center"
-        />
+        android:background="@drawable/cutting_board_port" />
 
-    <TextView style="@style/header_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/your_ingredients"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:paddingTop="20dp"/>
+    <TextView
+        style="@style/header_style"
+        android:text="@string/your_ingredients" />
 
-    <EditText style="@style/inputTextStyle"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        style="@style/edittext_style"
         android:id="@+id/addIngredientET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/add_ingredient"
-        android:layout_marginTop="100dp">
-    </EditText>
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelPadding="2dp"
+        app:met_floatingLabelText="@string/add_ingredient"
+        app:met_floatingLabelTextColor="@color/orange"
 
+        app:met_floatingLabelTextSize="13sp"
+        app:met_primaryColor="@color/orange"
+        app:met_textColor="@color/white"
+        app:met_textColorHint="@color/smoked_white" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="20dp">
+        android:layout_alignParentBottom="true">
 
-        <Button style="@style/buttonStyle"
+        <Button
             android:id="@+id/dietaryActivityB"
-            android:layout_width="match_parent"
+            style="@style/buttonStyle"
             android:text="@string/next_button"
             android:onClick="onDietaryClicked">
         </Button>
+
     </RelativeLayout>
 
 </RelativeLayout>
