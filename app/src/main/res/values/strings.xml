@@ -77,5 +77,6 @@
     <string name="edit">Edit</string>
 
     <string name="recipe_detail">Recipe Detail</string>
+    <string name="prep_time">Prep</string>
 
 </resources>
