@@ -59,6 +59,7 @@
         <item name="android:hint">@string/add_ingredient</item>
         <item name="android:textCursorDrawable">@drawable/cursor_white</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:alpha">.8</item>
     </style>
 
 </resources>
