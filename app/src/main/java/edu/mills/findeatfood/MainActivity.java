@@ -29,7 +29,7 @@ import java.util.List;
 public class MainActivity extends Activity
         implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
 
-    private ShareActionProvider shareActionProvider;
+//    private ShareActionProvider shareActionProvider;
     private String[] titles;
     private ListView drawerList;
     private DrawerLayout drawerLayout;
@@ -163,13 +163,13 @@ public class MainActivity extends Activity
         drawerLayout.closeDrawer(drawerList);
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the drawer is open, hide action items related to the content view
-        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
-        menu.findItem(R.id.action_share).setVisible(!drawerOpen);
-        return super.onPrepareOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        // If the drawer is open, hide action items related to the content view
+////        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
+////        menu.findItem(R.id.action_share).setVisible(!drawerOpen);
+//        return super.onPrepareOptionsMenu(menu);
+//    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -205,37 +205,37 @@ public class MainActivity extends Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem menuItem = menu.findItem(R.id.action_share);
-        shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-        setIntent("This is example text");
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        MenuItem menuItem = menu.findItem(R.id.action_share);
+//        shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
+//        setIntent("This is example text");
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void setIntent(String text) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, text);
-        shareActionProvider.setShareIntent(intent);
-    }
+//    private void setIntent(String text) {
+//        Intent intent = new Intent(Intent.ACTION_SEND);
+//        intent.setType("text/plain");
+//        intent.putExtra(Intent.EXTRA_TEXT, text);
+//        shareActionProvider.setShareIntent(intent);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        switch (item.getItemId()) {
-            case R.id.action_create_order:
-                //Code to run when the Create Order item is clicked
-                //Intent intent = new Intent(this, OrderActivity.class);
-                //startActivity(intent);
-                return true;
-            case R.id.action_settings:
-                //Code to run when the settings item is clicked
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+//        switch (item.getItemId()) {
+//            case R.id.action_create_order:
+//                //Code to run when the Create Order item is clicked
+//                //Intent intent = new Intent(this, OrderActivity.class);
+//                //startActivity(intent);
+//                return true;
+//            case R.id.action_settings:
+//                //Code to run when the settings item is clicked
+//                break;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
         return true;
     }
 

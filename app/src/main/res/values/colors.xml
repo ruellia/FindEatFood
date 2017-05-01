@@ -7,7 +7,9 @@
 
     <color name="orange">#E86C2E</color>
     <color name="greenery">#88B04B</color>
-
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="smoked_white">#cccccc</color>
+    <color name="charcoal">#181818</color>
+
 </resources>

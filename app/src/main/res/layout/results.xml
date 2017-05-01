@@ -2,25 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
-    android:background="#000000"
-    >
+    android:padding="5dp">
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="5dp"/>
+        android:layout_margin="15dp"
+        android:fadeScrollbars="false"
+        android:scrollbarThumbVertical="@color/greenery"
+        android:scrollbarSize="3dp"/>
 
-        <Button style="@style/buttonStyle2"
-            android:id="@+id/seeMoreButton"
-            android:text="@string/see_more" />
+    <Button
+        android:id="@+id/seeMoreButton"
+        style="@style/buttonStyle"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:text="@string/see_more" />
 
-        <Button style="@style/buttonStyle2"
-            android:id="@+id/EditButton"
-            android:onClick="onEditClicked"
-            android:text="@string/edit"
-            android:backgroundTint="#E86C2E"/>
+    <Button
+        android:id="@+id/EditButton"
+        style="@style/buttonStyle"
+        android:background="@color/orange"
+        android:layout_marginTop="8dp"
+        android:onClick="onEditClicked"
+        android:text="@string/edit" />
 
 </LinearLayout>

@@ -34,6 +34,7 @@ public class DietaryFragment extends Fragment {
         for (int i = 0; i < dietOptions.length; i++) {
             CheckBox checkBox = new CheckBox(this.getActivity());
             checkBox.setText(dietOptions[i]);
+            checkBox.setTextColor(getActivity().getResources().getColor(R.color.white));
             int checkBoxId = view.generateViewId();
             dietOptionsIds.add(checkBoxId);
             checkBox.setId(checkBoxId);
@@ -43,6 +44,7 @@ public class DietaryFragment extends Fragment {
         for (int i = 0; i < allergyOptions.length; i++) {
             CheckBox checkBox = new CheckBox(this.getActivity());
             checkBox.setText(allergyOptions[i]);
+            checkBox.setTextColor(getActivity().getResources().getColor(R.color.white));
             int checkBoxId = view.generateViewId();
             allergyOptionsIds.add(checkBoxId);
             checkBox.setId(checkBoxId);
