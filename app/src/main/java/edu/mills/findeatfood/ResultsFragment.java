@@ -29,6 +29,10 @@ public class ResultsFragment extends ListFragment {
     private ProgressDialog progress;
     private int startPosition;
 
+    public ResultsFragment(){
+        setRetainInstance(true);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
