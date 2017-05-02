@@ -2,13 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ingredients_portrait"
     tools:context="edu.mills.findeatfood.HomeFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/ingredients_portrait"
-        android:layout_gravity="center"
-        android:scaleType="fitXY"/>
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@drawable/ingredients_portrait"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:scaleType="fitXY"/>-->
 
 </FrameLayout>
