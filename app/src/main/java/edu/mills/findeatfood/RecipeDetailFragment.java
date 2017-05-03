@@ -28,13 +28,12 @@ public class RecipeDetailFragment extends Fragment {
     private Recipe recipe;
     private Boolean favoritesCBVal = false;
     private CheckBox favoritesCB;
-    public static final String RECIPE_ID = "recipeId";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle argumentData = getArguments();
         View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
-        new GetRecipeTask().execute(argumentData.getString(RECIPE_ID));
+        new GetRecipeTask().execute(argumentData.getString(MainActivity.RECIPE_ID));
         favoritesCB = (CheckBox) view.findViewById(R.id.favorite_checkbox);
         favoritesCB.setOnClickListener(new View.OnClickListener() {
             @Override
