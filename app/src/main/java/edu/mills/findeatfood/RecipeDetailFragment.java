@@ -3,7 +3,6 @@ package edu.mills.findeatfood;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;

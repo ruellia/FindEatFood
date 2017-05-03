@@ -52,7 +52,6 @@ public class DietaryFragment extends Fragment {
         }
 
         dietOptionsSelectedListener.onDietOptionsSelected(dietOptionsIds, allergyOptionsIds);
-
         return view;
     }
 
