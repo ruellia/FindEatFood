@@ -8,7 +8,7 @@ public class SQLiteRecipeOpenHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "favorite_recipes";
     private static final int DB_VERSION = 1;
 
-    //package-private table and column names
+    // package-private table and column names
     static final String RECIPE_TABLE = "FAVORITE_RECIPES";
     static final String RECIPE_NAME_COL = "RECIPE_NAME";
     static final String RECIPE_ID_COL = "RECIPE_ID";

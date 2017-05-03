@@ -20,8 +20,7 @@
         android:background="#FFF5DE"
         android:choiceMode="singleChoice"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="0dp"
-        />
+        android:dividerHeight="0dp" />
 
 </android.support.v4.widget.DrawerLayout>
 

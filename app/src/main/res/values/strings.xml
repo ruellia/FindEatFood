@@ -83,5 +83,6 @@
     <string name="loading">Loading...</string>
     <string name="cookTime">Cook Time:</string>
     <string name="rating">Rating:</string>
+    <string name="directions_button">DIRECTIONS</string>
 
 </resources>
