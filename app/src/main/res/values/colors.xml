@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="border">#E86C2E</color>
+    <color name="background">#FFF5DE</color>
 
     <color name="orange">#E86C2E</color>
     <color name="greenery">#88B04B</color>
