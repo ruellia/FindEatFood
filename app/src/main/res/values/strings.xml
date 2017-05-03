@@ -59,7 +59,6 @@
     <string-array name="titles">
         <item>Home</item>
         <item>Find Recipes</item>
-        <item>Find Deals</item>
         <item>Favorites</item>
     </string-array>
 
