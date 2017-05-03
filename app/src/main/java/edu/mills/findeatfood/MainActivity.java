@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends Activity
-        implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
+        implements ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
 
     //    private ShareActionProvider shareActionProvider;
     private String[] titles;
@@ -105,11 +105,8 @@ public class MainActivity extends Activity
             if (fragment instanceof RecipeDetailFragment) {
                 currentPosition = 1;
             }
-            if (fragment instanceof FindDealsFragment) {
-                currentPosition = 2;
-            }
             if (fragment instanceof FavoritesFragment) {
-                currentPosition = 3;
+                currentPosition = 2;
             }
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
@@ -149,9 +146,6 @@ public class MainActivity extends Activity
                 fragment = new IngredientsFragment();
                 break;
             case 2:
-                fragment = new FindDealsFragment();
-                break;
-            case 3:
                 fragment = new FavoritesFragment();
                 break;
             default:
@@ -284,12 +278,6 @@ public class MainActivity extends Activity
 
     private String[] parseIngredientInput(String ingredients) {
         return ingredients.split("\\s*,\\s*");
-    }
-
-    @Override
-    public void onStoreClicked(long id) {
-        FindDealsByStoreFragment storeDealsFrag = new FindDealsByStoreFragment();
-        doFragTransaction(storeDealsFrag);
     }
 
     @Override
