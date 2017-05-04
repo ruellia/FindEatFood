@@ -10,7 +10,9 @@ import android.database.sqlite.SQLiteDatabase;
  * make calls here instead of trying to connect directly to the database.
  */
 public final class RecipeDatabaseUtilities {
-
+    /**
+     * A String called RECIPE_TABLE that is a reference to our FAVORITE_RECIPES table.
+     */
     private static final String RECIPE_TABLE = "FAVORITE_RECIPES";
 
     private RecipeDatabaseUtilities() {
@@ -21,7 +23,8 @@ public final class RecipeDatabaseUtilities {
      * @param db Our SQLiteDatabase, where we will be inserting the recipe into.
      * @param recipeName A String which is the name of the recipe.
      * @param recipeId A String which is the id of the recipe.
-     * @return void It inserts the RECIPE_TABLE into the database with the values of the
+     * @return void
+     * It inserts the RECIPE_TABLE into the database with the values of the
      * name of the recipe and its id.
      */
     public static void insertRecipe(SQLiteDatabase db,
@@ -55,7 +58,8 @@ public final class RecipeDatabaseUtilities {
      * Does this by querying through the database.
      * @param db Our SQLiteDatabase.
      * @param recipeId A String, which is the id of the given recipe.
-     * @return Boolean Returns true if the recipe is found in the database. Returns false if the recipe is not found.
+     * @return Boolean Returns true if the recipe is found in the database and
+     * returns false if the recipe is not found.
      */
     public static Boolean searchForRecipe(SQLiteDatabase db,
                                           String recipeId) {
