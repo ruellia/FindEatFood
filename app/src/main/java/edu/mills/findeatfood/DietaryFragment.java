@@ -27,6 +27,8 @@ public class DietaryFragment extends Fragment {
                 getResources().getStringArray(R.array.dietOptionsName);
         String[] allergyOptions =
                 getResources().getStringArray(R.array.allergyOptionsName);
+        LinearLayout dietaryOptionsLayout = (LinearLayout) view.findViewById(R.id.dietaryOptionsLayout);
+
 
         addCheckBoxes(dietOptions, view, dietOptionsIds);
         addCheckBoxes(allergyOptions, view, allergyOptionsIds);
