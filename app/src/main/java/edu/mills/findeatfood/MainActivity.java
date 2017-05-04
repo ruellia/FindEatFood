@@ -26,10 +26,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
+/**
+ * Application that searches for recipes from an ingredient list and returns a list of recipes from an
+ * API if matches are found. Recipes can be added to favorites and stored in a database.
+ */
 public class MainActivity extends Activity
         implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
 
-//    private ShareActionProvider shareActionProvider;
     private String[] titles;
     private ListView drawerList;
     private DrawerLayout drawerLayout;
@@ -42,16 +46,17 @@ public class MainActivity extends Activity
     private List<Integer> dietOptionsIds = new ArrayList<Integer>();
     private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
 
+
     @Override
     public void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds) {
         this.dietOptionsIds = dietOptionsIds;
         this.allergyOptionsIds = allergyOptionsIds;
     }
 
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            //call when item in the drawer is clicked
             selectItem(position);
         }
     }
@@ -81,6 +86,9 @@ public class MainActivity extends Activity
         getFragmentManager().addOnBackStackChangedListener(new FragManager());
     }
 
+    /**
+     * Displays the correct fragment when using back button.
+     */
     private class FragManager implements FragmentManager.OnBackStackChangedListener {
 
         public void onBackStackChanged() {
@@ -113,6 +121,7 @@ public class MainActivity extends Activity
         }
     }
 
+
     private class DrawerToggle extends ActionBarDrawerToggle {
 
         DrawerToggle(Activity activity,
@@ -123,14 +132,14 @@ public class MainActivity extends Activity
 
         }
 
-        //Called when a drawer has settled in a completely closed state
+
         @Override
         public void onDrawerClosed(View view) {
             super.onDrawerClosed(view);
             invalidateOptionsMenu();
         }
 
-        //Called when a drawer has settled in a completely open state.
+
         @Override
         public void onDrawerOpened(View drawerView) {
             super.onDrawerOpened(drawerView);
@@ -171,12 +180,13 @@ public class MainActivity extends Activity
 //        return super.onPrepareOptionsMenu(menu);
 //    }
 
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         drawerToggle.syncState();
     }
+
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -184,11 +194,13 @@ public class MainActivity extends Activity
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("position", currentPosition);
     }
+
 
     private void setActionBarTitle(int position) {
         String title;
@@ -204,7 +216,6 @@ public class MainActivity extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
 //        getMenuInflater().inflate(R.menu.menu_main, menu);
 //        MenuItem menuItem = menu.findItem(R.id.action_share);
 //        shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
@@ -218,6 +229,7 @@ public class MainActivity extends Activity
 //        intent.putExtra(Intent.EXTRA_TEXT, text);
 //        shareActionProvider.setShareIntent(intent);
 //    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -238,6 +250,7 @@ public class MainActivity extends Activity
 //        }
         return true;
     }
+
 
     public void onResultsClicked(View v) {
         String[] dietaryOptionsName = getResources().getStringArray(R.array.dietOptionsName);
@@ -308,6 +321,7 @@ public class MainActivity extends Activity
         }
     }
 
+
     private void setIngredients(String[] ingredients) {
         this.ingredients = ingredients;
     }
@@ -322,6 +336,7 @@ public class MainActivity extends Activity
         doFragTransaction(storeDealsFrag);
     }
 
+
     @Override
     public void onRecipeClicked(String recipeId) {
         Bundle toPass = new Bundle();
@@ -331,7 +346,7 @@ public class MainActivity extends Activity
         doFragTransaction(detailsFrag);
     }
 
-    // helper function
+
     private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
         fragTransaction.replace(R.id.content_frame, fragment, "visible_fragment");
