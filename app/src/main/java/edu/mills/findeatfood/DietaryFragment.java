@@ -16,7 +16,7 @@ import java.util.List;
  * Displays dietary restrictions in checkboxes. Checking a checkbox
  * will add the dietary restriction to the recipe API call. Clicking the
  * find recipe button will send the recipe API call and launch
- * {@link ResultsFragment}
+ * {@link ResultsFragment}.
  */
 public class DietaryFragment extends Fragment {
 
@@ -76,7 +76,6 @@ public class DietaryFragment extends Fragment {
         /**
          * Passes ArrayLists of dietary and allergy options ids
          * into MainActivity.
-         *
          * @param dietOptionsIds    ArrayList of ids for dietary options.
          * @param allergyOptionsIds ArrayList of ids for allergy options.
          */
