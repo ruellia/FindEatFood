@@ -74,10 +74,9 @@ public class DietaryFragment extends Fragment {
      */
     public interface OnDietOptionsSelectedListener {
         /**
-         * Passes ArrayLists of dietary and allergy options ids
-         * into MainActivity.
-         * @param dietOptionsIds    ArrayList of ids for dietary options.
-         * @param allergyOptionsIds ArrayList of ids for allergy options.
+         * Passes dietary and allergy options ids.
+         * @param dietOptionsIds ids for dietary options.
+         * @param allergyOptionsIds ids for allergy options.
          */
         void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds);
     }
