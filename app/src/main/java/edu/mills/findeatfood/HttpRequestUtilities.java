@@ -3,7 +3,6 @@ package edu.mills.findeatfood;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
-import java.util.Arrays;
 import java.util.List;
 
 import edu.mills.findeatfood.models.Recipe;

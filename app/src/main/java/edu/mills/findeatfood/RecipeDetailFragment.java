@@ -3,7 +3,6 @@ package edu.mills.findeatfood;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -21,6 +20,12 @@ import com.bumptech.glide.Glide;
 
 import edu.mills.findeatfood.models.Recipe;
 
+/**
+ * Provides details about the recipe by giving its name, prep time, ingredients, etc.
+ * A checkbox is included that allows for the user to add and remove items from the database.
+ * This checkbox serves the purpose of allowing for the user to 'favorite' recipes.
+ */
+
 public class RecipeDetailFragment extends Fragment {
 
     private ProgressDialog progress;
@@ -33,8 +38,11 @@ public class RecipeDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle argumentData = getArguments();
         View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
-        new GetRecipeTask().execute(argumentData.getString("recipeId"));
+        //An asynchronous call to GetRecipeTask.
+        new GetRecipeTask().execute(argumentData.getString(MainActivity.RECIPE_ID));
         favoritesCB = (CheckBox) view.findViewById(R.id.favorite_checkbox);
+        //Checks to see if the checkbox is clicked. If it is, it makes an asynchronous call on InsertRecipeTask() and
+        // change favoriteCBVal to true. If it is not, it makes an asynchronous call on DeleteRecipeTask().
         favoritesCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,19 +58,25 @@ public class RecipeDetailFragment extends Fragment {
         return view;
     }
 
+    /**
+     *
+     */
     private class RecipeWrapper {
         public Recipe recipe;
         public Boolean isRecipeInDB;
     }
 
+    /**
+     * An async task that gets the information of the recipe.
+     */
     private class GetRecipeTask extends AsyncTask<String, Void, RecipeWrapper> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             progress = new ProgressDialog(getActivity());
-            progress.setMessage("Getting the latest version of your recipe.");
-            progress.setTitle("Loading...");
+            progress.setMessage(getString(R.string.version));
+            progress.setTitle(getString(R.string.loading));
             progress.setIndeterminate(false);
             progress.setCancelable(true);
             progress.show();
@@ -84,12 +98,12 @@ public class RecipeDetailFragment extends Fragment {
             TextView name = (TextView) getActivity().findViewById(R.id.recipe_name);
             name.setText(recipeWrapper.recipe.name);
             TextView prepTime = (TextView) getActivity().findViewById(R.id.recipe_prep_time);
-            prepTime.setText("Cook Time: " + recipeWrapper.recipe.totalTime);
+            prepTime.setText(getString(R.string.cookTime) + recipeWrapper.recipe.totalTime);
             TextView ingredients = (TextView) getActivity().findViewById(R.id.recipe_ingredients);
             String joined = TextUtils.join("\n", recipeWrapper.recipe.ingredientLines);
             ingredients.setText(joined);
             TextView rating = (TextView) getActivity().findViewById(R.id.rating);
-            rating.setText("Rating: " + recipeWrapper.recipe.rating);
+            rating.setText(getString(R.string.rating) + recipeWrapper.recipe.rating);
 
             ImageView recipeIV = (ImageView) getActivity().findViewById(R.id.recipeIV);
             Glide.with(getActivity()).load(recipeWrapper.recipe.getImageURL())
@@ -111,7 +125,16 @@ public class RecipeDetailFragment extends Fragment {
         }
     }
 
+    /**
+     * An async task that inserts the recipe.
+     */
     private class InsertRecipeTask extends AsyncTask<Void, Void, Void> {
+        /**
+         * In a background thread, calls upon the insertRecipe method from
+         * RecipeDatabaseUtilities to insert the recipe into the database.
+         * @param voids It takes in no parameters.
+         * @return voids Required for the method.
+         */
         @Override
         protected Void doInBackground(Void... voids) {
             RecipeDatabaseUtilities.insertRecipe(db, recipe.name, recipe.id);
@@ -119,9 +142,18 @@ public class RecipeDetailFragment extends Fragment {
         }
     }
 
-    private class DeleteRecipeTask extends AsyncTask<Void, Void, Cursor> {
+    /**
+     * In a background thread, makes a call to RecipeDatabaseUtilities
+     */
+    private class DeleteRecipeTask extends AsyncTask<Void, Void, Void> {
+        /**
+         * In a background thread, calls upon the deleteRecipe method from
+         * RecipeDatabaseUtilities to delete the recipe from the database.
+         * @param voids It takes in no parameters.
+         * @return voids Required for the method.
+         */
         @Override
-        protected Cursor doInBackground(Void... voids) {
+        protected Void doInBackground(Void... voids) {
             RecipeDatabaseUtilities.deleteRecipe(db, recipe.id);
             return null;
         }
