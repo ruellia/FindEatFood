@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 /**
  * Provides an interface that connects to the database. Activities and fragments should
- * make calls to here instead of trying to connect directly to the database.
+ * make calls here instead of trying to connect directly to the database.
  */
 public final class RecipeDatabaseUtilities {
 
