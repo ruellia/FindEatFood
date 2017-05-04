@@ -83,5 +83,6 @@
     <string name="cookTime">Cook Time:</string>
     <string name="rating">Rating:</string>
     <string name="directions_button">DIRECTIONS</string>
+    <string name="error">must implement OnDietOptionsSelectedListener</string>
 
 </resources>
