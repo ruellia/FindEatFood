@@ -4,13 +4,26 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Creates and updates the database for the app, FindEatFood. A way for activities and
+ * fragments to connect to the database.
+ */
 public class SQLiteRecipeOpenHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "favorite_recipes";
     private static final int DB_VERSION = 1;
 
     // package-private table and column names
+    /**
+     * Name of the Table
+     */
     static final String RECIPE_TABLE = "FAVORITE_RECIPES";
+    /**
+     * Name of the column for recipes.
+     */
     static final String RECIPE_NAME_COL = "RECIPE_NAME";
+    /**
+     * Name of the column for the ids of recipes.
+     */
     static final String RECIPE_ID_COL = "RECIPE_ID";
 
     SQLiteRecipeOpenHelper(Context context) {
