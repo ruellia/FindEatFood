@@ -15,7 +15,7 @@
         android:fadeScrollbars="false"
         android:scrollbarThumbVertical="@color/greenery"
         android:scrollbarSize="3dp"
-        android:divider="@color/smoked_white"
+        android:divider="@color/orange"
         android:dividerHeight="1px" />
 
     <Button
