@@ -31,6 +31,6 @@
         android:background="@color/orange"
         android:layout_marginTop="8dp"
         android:onClick="onEditClicked"
-        android:text="@string/edit" />
+        android:text="@string/new_search" />
 
 </LinearLayout>

@@ -97,11 +97,9 @@
                 android:textColor="@color/white"
                 android:layout_alignRight="@+id/recipe_name"
                 android:layout_alignEnd="@+id/recipe_name"
-                android:text="INGREDIENTS"/>
+                android:text="@string/ingredients"
+                />
         </ScrollView>
-
-
-
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -113,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recipe_instructions"
-                android:text="Directions"
+                android:text="@string/directions"
                 android:onClick="Link to Recipe URL">
             </Button>
         </RelativeLayout>
