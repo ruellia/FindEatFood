@@ -4,11 +4,4 @@
     android:layout_height="match_parent"
     android:background="@drawable/ingredients_landscape"
     tools:context="edu.mills.findeatfood.HomeFragment">
-
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@drawable/ingredients_landscape"-->
-        <!--android:layout_gravity="center"-->
-        <!--/>-->
-    </FrameLayout>
+</FrameLayout>
