@@ -36,12 +36,30 @@ public class MainActivity extends Activity
     private ActionBarDrawerToggle drawerToggle;
     private int currentPosition = 0;
     private String[] ingredients;
-    public static final String INGREDIENTS = "ingredients";
-    public static final String DIET_RESTRICTIONS = "dietRestrictions";
-    public static final String ALLERGY_RESTRICTIONS = "allergyRestrictions";
-    public static final String RECIPE_ID = "recipeId";
-    public static final String VISIBLE_FRAGMENT = "visible_fragment";
-    public static final String POSITION = "position";
+    /**
+     * Used for passing ingredients in bundle for recipe API call.
+     */
+    static final String INGREDIENTS = "ingredients";
+    /**
+     * Used for passing dietary restrictions in bundle for recipe API call.
+     */
+    static final String DIET_RESTRICTIONS = "dietRestrictions";
+    /**
+     * Used for passing allergy restrictions in bundle for recipe API call.
+     */
+    static final String ALLERGY_RESTRICTIONS = "allergyRestrictions";
+    /**
+     *
+     */
+    static final String RECIPE_ID = "recipeId";
+    /**
+     *
+     */
+    static final String VISIBLE_FRAGMENT = "visible_fragment";
+    /**
+     * Used to save the instance state.
+     */
+    static final String POSITION = "position";
     private List<Integer> dietOptionsIds = new ArrayList<Integer>();
     private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
 
@@ -83,9 +101,6 @@ public class MainActivity extends Activity
         getFragmentManager().addOnBackStackChangedListener(new FragManager());
     }
 
-    /**
-     * Displays the correct fragment when using back button.
-     */
     private class FragManager implements FragmentManager.OnBackStackChangedListener {
 
         public void onBackStackChanged() {
