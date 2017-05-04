@@ -80,7 +80,6 @@
     <!-- Recipe Detail Fragment -->
     <string name="ingredients">INGREDIENTS</string>
     <string name="directions">Directions</string>
-    <string name="ingredients">Ingredients:</string>
     <string name="version">Getting the latest version of your recipe.</string>
     <string name="loading">Loading...</string>
     <string name="cookTime">Cook Time:</string>
