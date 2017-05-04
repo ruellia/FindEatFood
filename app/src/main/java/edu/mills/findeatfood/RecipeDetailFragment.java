@@ -3,7 +3,6 @@ package edu.mills.findeatfood;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -33,7 +32,7 @@ public class RecipeDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle argumentData = getArguments();
         View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
-        new GetRecipeTask().execute(argumentData.getString("recipeId"));
+        new GetRecipeTask().execute(argumentData.getString(MainActivity.RECIPE_ID));
         favoritesCB = (CheckBox) view.findViewById(R.id.favorite_checkbox);
         favoritesCB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +60,8 @@ public class RecipeDetailFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             progress = new ProgressDialog(getActivity());
-            progress.setMessage("Getting the latest version of your recipe.");
-            progress.setTitle("Loading...");
+            progress.setMessage(getString(R.string.version));
+            progress.setTitle(getString(R.string.loading));
             progress.setIndeterminate(false);
             progress.setCancelable(true);
             progress.show();
@@ -84,12 +83,12 @@ public class RecipeDetailFragment extends Fragment {
             TextView name = (TextView) getActivity().findViewById(R.id.recipe_name);
             name.setText(recipeWrapper.recipe.name);
             TextView prepTime = (TextView) getActivity().findViewById(R.id.recipe_prep_time);
-            prepTime.setText("Cook Time: " + recipeWrapper.recipe.totalTime);
+            prepTime.setText(getString(R.string.cookTime) + recipeWrapper.recipe.totalTime);
             TextView ingredients = (TextView) getActivity().findViewById(R.id.recipe_ingredients);
             String joined = TextUtils.join("\n", recipeWrapper.recipe.ingredientLines);
             ingredients.setText(joined);
             TextView rating = (TextView) getActivity().findViewById(R.id.rating);
-            rating.setText("Rating: " + recipeWrapper.recipe.rating);
+            rating.setText(getString(R.string.rating) + recipeWrapper.recipe.rating);
 
             ImageView recipeIV = (ImageView) getActivity().findViewById(R.id.recipeIV);
             Glide.with(getActivity()).load(recipeWrapper.recipe.getImageURL())
@@ -119,9 +118,9 @@ public class RecipeDetailFragment extends Fragment {
         }
     }
 
-    private class DeleteRecipeTask extends AsyncTask<Void, Void, Cursor> {
+    private class DeleteRecipeTask extends AsyncTask<Void, Void, Void> {
         @Override
-        protected Cursor doInBackground(Void... voids) {
+        protected Void doInBackground(Void... voids) {
             RecipeDatabaseUtilities.deleteRecipe(db, recipe.id);
             return null;
         }

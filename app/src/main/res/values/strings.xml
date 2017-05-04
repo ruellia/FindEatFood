@@ -60,7 +60,6 @@
     <string-array name="titles">
         <item>Home</item>
         <item>Find Recipes</item>
-        <item>Find Deals</item>
         <item>Favorites</item>
     </string-array>
 
@@ -81,5 +80,12 @@
     <!-- Recipe Detail Fragment -->
     <string name="ingredients">INGREDIENTS</string>
     <string name="directions">Directions</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="version">Getting the latest version of your recipe.</string>
+    <string name="loading">Loading...</string>
+    <string name="cookTime">Cook Time:</string>
+    <string name="rating">Rating:</string>
+    <string name="directions_button">DIRECTIONS</string>
+    <string name="error">must implement OnDietOptionsSelectedListener</string>
 
 </resources>

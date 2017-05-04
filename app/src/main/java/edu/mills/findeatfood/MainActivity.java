@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +17,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,9 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends Activity
-        implements FindDealsFragment.StoreListListener, ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
+        implements ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
 
-//    private ShareActionProvider shareActionProvider;
     private String[] titles;
     private ListView drawerList;
     private DrawerLayout drawerLayout;
@@ -39,6 +35,9 @@ public class MainActivity extends Activity
     public static final String INGREDIENTS = "ingredients";
     public static final String DIET_RESTRICTIONS = "dietRestrictions";
     public static final String ALLERGY_RESTRICTIONS = "allergyRestrictions";
+    public static final String RECIPE_ID = "recipeId";
+    public static final String VISIBLE_FRAGMENT = "visible_fragment";
+    public static final String POSITION = "position";
     private List<Integer> dietOptionsIds = new ArrayList<Integer>();
     private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
 
@@ -69,7 +68,7 @@ public class MainActivity extends Activity
                 android.R.layout.simple_list_item_activated_1, titles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
         if (savedInstanceState != null) {
-            currentPosition = savedInstanceState.getInt("position");
+            currentPosition = savedInstanceState.getInt(POSITION);
             setActionBarTitle(currentPosition);
         } else {
             selectItem(0);
@@ -85,7 +84,7 @@ public class MainActivity extends Activity
 
         public void onBackStackChanged() {
             FragmentManager fragMan = getFragmentManager();
-            Fragment fragment = fragMan.findFragmentByTag("visible_fragment");
+            Fragment fragment = fragMan.findFragmentByTag(VISIBLE_FRAGMENT);
 
             if (fragment instanceof HomeFragment) {
                 currentPosition = 0;
@@ -102,11 +101,8 @@ public class MainActivity extends Activity
             if (fragment instanceof RecipeDetailFragment) {
                 currentPosition = 1;
             }
-            if (fragment instanceof FindDealsFragment) {
-                currentPosition = 2;
-            }
             if (fragment instanceof FavoritesFragment) {
-                currentPosition = 3;
+                currentPosition = 2;
             }
             setActionBarTitle(currentPosition);
             drawerList.setItemChecked(currentPosition, true);
@@ -123,14 +119,14 @@ public class MainActivity extends Activity
 
         }
 
-        //Called when a drawer has settled in a completely closed state
+        // Called when a drawer has settled in a completely closed state
         @Override
         public void onDrawerClosed(View view) {
             super.onDrawerClosed(view);
             invalidateOptionsMenu();
         }
 
-        //Called when a drawer has settled in a completely open state.
+        // Called when a drawer has settled in a completely open state.
         @Override
         public void onDrawerOpened(View drawerView) {
             super.onDrawerOpened(drawerView);
@@ -146,30 +142,19 @@ public class MainActivity extends Activity
                 fragment = new IngredientsFragment();
                 break;
             case 2:
-                fragment = new FindDealsFragment();
-                break;
-            case 3:
                 fragment = new FavoritesFragment();
                 break;
             default:
                 fragment = new HomeFragment();
         }
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment, "visible_fragment");
+        ft.replace(R.id.content_frame, fragment, VISIBLE_FRAGMENT);
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
         setActionBarTitle(position);
         drawerLayout.closeDrawer(drawerList);
     }
-
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        // If the drawer is open, hide action items related to the content view
-////        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
-////        menu.findItem(R.id.action_share).setVisible(!drawerOpen);
-//        return super.onPrepareOptionsMenu(menu);
-//    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -187,7 +172,7 @@ public class MainActivity extends Activity
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("position", currentPosition);
+        outState.putInt(POSITION, currentPosition);
     }
 
     private void setActionBarTitle(int position) {
@@ -204,38 +189,14 @@ public class MainActivity extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        MenuItem menuItem = menu.findItem(R.id.action_share);
-//        shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-//        setIntent("This is example text");
         return super.onCreateOptionsMenu(menu);
     }
-
-//    private void setIntent(String text) {
-//        Intent intent = new Intent(Intent.ACTION_SEND);
-//        intent.setType("text/plain");
-//        intent.putExtra(Intent.EXTRA_TEXT, text);
-//        shareActionProvider.setShareIntent(intent);
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-//        switch (item.getItemId()) {
-//            case R.id.action_create_order:
-//                //Code to run when the Create Order item is clicked
-//                //Intent intent = new Intent(this, OrderActivity.class);
-//                //startActivity(intent);
-//                return true;
-//            case R.id.action_settings:
-//                //Code to run when the settings item is clicked
-//                break;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
         return true;
     }
 
@@ -297,7 +258,6 @@ public class MainActivity extends Activity
     }
 
     public void onDietaryClicked(View v) {
-        Log.d("MainActivity", "onDietaryClicked");
         EditText addIngredientET = (EditText) findViewById(R.id.addIngredientET);
         if (addIngredientET.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), R.string.error_ingredient, Toast.LENGTH_SHORT).show();
@@ -317,15 +277,9 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void onStoreClicked(long id) {
-        FindDealsByStoreFragment storeDealsFrag = new FindDealsByStoreFragment();
-        doFragTransaction(storeDealsFrag);
-    }
-
-    @Override
     public void onRecipeClicked(String recipeId) {
         Bundle toPass = new Bundle();
-        toPass.putString("recipeId", recipeId);
+        toPass.putString(RECIPE_ID, recipeId);
         RecipeDetailFragment detailsFrag = new RecipeDetailFragment();
         detailsFrag.setArguments(toPass);
         doFragTransaction(detailsFrag);
@@ -334,7 +288,7 @@ public class MainActivity extends Activity
     // helper function
     private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.replace(R.id.content_frame, fragment, "visible_fragment");
+        fragTransaction.replace(R.id.content_frame, fragment, VISIBLE_FRAGMENT);
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
