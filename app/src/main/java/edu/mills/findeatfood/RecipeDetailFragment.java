@@ -38,11 +38,9 @@ public class RecipeDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle argumentData = getArguments();
         View view = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
-        //An asynchronous call to GetRecipeTask.
         new GetRecipeTask().execute(argumentData.getString(MainActivity.RECIPE_ID));
         favoritesCB = (CheckBox) view.findViewById(R.id.favorite_checkbox);
-        //Checks to see if the checkbox is clicked. If it is, it makes an asynchronous call on InsertRecipeTask() and
-        // change favoriteCBVal to true. If it is not, it makes an asynchronous call on DeleteRecipeTask().
+        // Inserts or deletes recipe from database
         favoritesCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,17 +56,11 @@ public class RecipeDetailFragment extends Fragment {
         return view;
     }
 
-    /**
-     *
-     */
     private class RecipeWrapper {
         public Recipe recipe;
         public Boolean isRecipeInDB;
     }
 
-    /**
-     * An async task that gets the information of the recipe.
-     */
     private class GetRecipeTask extends AsyncTask<String, Void, RecipeWrapper> {
 
         @Override
@@ -125,16 +117,7 @@ public class RecipeDetailFragment extends Fragment {
         }
     }
 
-    /**
-     * An async task that inserts the recipe.
-     */
     private class InsertRecipeTask extends AsyncTask<Void, Void, Void> {
-        /**
-         * In a background thread, calls upon the insertRecipe method from
-         * RecipeDatabaseUtilities to insert the recipe into the database.
-         * @param voids It takes in no parameters.
-         * @return voids Required for the method.
-         */
         @Override
         protected Void doInBackground(Void... voids) {
             RecipeDatabaseUtilities.insertRecipe(db, recipe.name, recipe.id);
@@ -142,16 +125,7 @@ public class RecipeDetailFragment extends Fragment {
         }
     }
 
-    /**
-     * In a background thread, makes a call to RecipeDatabaseUtilities
-     */
     private class DeleteRecipeTask extends AsyncTask<Void, Void, Void> {
-        /**
-         * In a background thread, calls upon the deleteRecipe method from
-         * RecipeDatabaseUtilities to delete the recipe from the database.
-         * @param voids It takes in no parameters.
-         * @return voids Required for the method.
-         */
         @Override
         protected Void doInBackground(Void... voids) {
             RecipeDatabaseUtilities.deleteRecipe(db, recipe.id);

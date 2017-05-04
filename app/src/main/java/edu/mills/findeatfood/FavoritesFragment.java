@@ -1,11 +1,9 @@
 package edu.mills.findeatfood;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.ListFragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,11 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Retrieves a list of all of the recipes in the database. If a recipe is clicked,
+ * the fragment launches {@link RecipeDetailFragment}.
+ */
 
 public class FavoritesFragment extends ListFragment {
 
