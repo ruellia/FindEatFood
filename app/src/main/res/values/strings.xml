@@ -20,6 +20,7 @@
         <item>Paleo</item>
     </string-array>
 
+
     <string-array name="allergyOptionsName">
         <item>Gluten-Free</item>
         <item>Peanut-Free</item>
@@ -72,11 +73,13 @@
 
     <!-- Results Fragment -->
     <string name="see_more">See More</string>
-    <string name="edit">New Search</string>
+    <string name="new_search">New Search</string>
 
     <string name="recipe_detail">Recipe Detail</string>
 
     <!-- Recipe Detail Fragment -->
+    <string name="ingredients">INGREDIENTS</string>
+    <string name="directions">Directions</string>
     <string name="ingredients">Ingredients:</string>
     <string name="version">Getting the latest version of your recipe.</string>
     <string name="loading">Loading...</string>
