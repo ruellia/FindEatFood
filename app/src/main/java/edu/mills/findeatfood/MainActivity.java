@@ -85,8 +85,7 @@ public class MainActivity extends Activity
         // reference to Drawer Layout
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         // populate the ListView
-        drawerList.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_activated_1, titles));
+        drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, titles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
         if (savedInstanceState != null) {
             currentPosition = savedInstanceState.getInt(POSITION);
@@ -119,13 +118,15 @@ public class MainActivity extends Activity
             if (fragment instanceof ResultsFragment) {
                 currentPosition = 1;
             }
-            if (fragment instanceof RecipeDetailFragment) {
-                currentPosition = 1;
-            }
+
             if (fragment instanceof FavoritesFragment) {
                 currentPosition = 2;
             }
             setActionBarTitle(currentPosition);
+            if (fragment instanceof RecipeDetailFragment) {
+                currentPosition = 1;
+                getActionBar().setTitle("   " + getString(R.string.recipe_details));
+            }
             drawerList.setItemChecked(currentPosition, true);
         }
     }
@@ -174,6 +175,8 @@ public class MainActivity extends Activity
         setActionBarTitle(position);
         drawerLayout.closeDrawer(drawerList);
     }
+
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -310,5 +313,4 @@ public class MainActivity extends Activity
         fragTransaction.addToBackStack(null);
         fragTransaction.commit();
     }
-
 }

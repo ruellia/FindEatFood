@@ -63,6 +63,8 @@
         <item>Favorites</item>
     </string-array>
 
+    <!-- Fragment Titles -->
+
     <string name="find_recipes">Find Recipes</string>
     <string name="open_drawer">Open navigation drawer</string>
     <string name="close_drawer">Close navigation drawer</string>
@@ -75,7 +77,7 @@
     <string name="see_more">See More</string>
     <string name="new_search">New Search</string>
 
-    <string name="recipe_detail">Recipe Detail</string>
+    <string name="recipe_details">Recipe Details</string>
 
     <!-- Recipe Detail Fragment -->
     <string name="ingredients">INGREDIENTS</string>
