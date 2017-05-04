@@ -27,32 +27,28 @@ public class DietaryFragment extends Fragment {
                 getResources().getStringArray(R.array.dietOptionsName);
         String[] allergyOptions =
                 getResources().getStringArray(R.array.allergyOptionsName);
-        LinearLayout dietaryOptionsLayout =
-                (LinearLayout) view.findViewById(R.id.dietaryOptionsLayout);
 
-
-        for (int i = 0; i < dietOptions.length; i++) {
-            CheckBox checkBox = new CheckBox(this.getActivity());
-            checkBox.setText(dietOptions[i]);
-            checkBox.setTextColor(getActivity().getResources().getColor(R.color.white));
-            int checkBoxId = view.generateViewId();
-            dietOptionsIds.add(checkBoxId);
-            checkBox.setId(checkBoxId);
-            dietaryOptionsLayout.addView(checkBox);
-        }
-
-        for (int i = 0; i < allergyOptions.length; i++) {
-            CheckBox checkBox = new CheckBox(this.getActivity());
-            checkBox.setText(allergyOptions[i]);
-            checkBox.setTextColor(getActivity().getResources().getColor(R.color.white));
-            int checkBoxId = view.generateViewId();
-            allergyOptionsIds.add(checkBoxId);
-            checkBox.setId(checkBoxId);
-            dietaryOptionsLayout.addView(checkBox);
-        }
+        addCheckBoxes(dietOptions, view, dietOptionsIds);
+        addCheckBoxes(allergyOptions, view, allergyOptionsIds);
 
         dietOptionsSelectedListener.onDietOptionsSelected(dietOptionsIds, allergyOptionsIds);
         return view;
+    }
+
+    public void addCheckBoxes(String[] options,
+                              View view,
+                              List<Integer> optionsIds ){
+        LinearLayout dietaryOptionsLayout =
+                (LinearLayout) view.findViewById(R.id.dietaryOptionsLayout);
+        for (int i = 0; i < options.length; i++) {
+        CheckBox checkBox = new CheckBox(this.getActivity());
+        checkBox.setText(options[i]);
+        checkBox.setTextColor(getActivity().getResources().getColor(R.color.white));
+        int checkBoxId = view.generateViewId();
+        optionsIds.add(checkBoxId);
+        checkBox.setId(checkBoxId);
+        dietaryOptionsLayout.addView(checkBox);
+        }
     }
 
     @Override
@@ -61,7 +57,7 @@ public class DietaryFragment extends Fragment {
         try {
             dietOptionsSelectedListener = (OnDietOptionsSelectedListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + "must implement OnDietOptionsSelectedListener");
+            throw new ClassCastException(activity.toString() + getString(R.string.error));
         }
     }
 
