@@ -26,9 +26,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 /**
- * Application that searches for recipes from an ingredient list and returns a list of recipes from an
+ * Searches for recipes from an ingredient list and returns a list of recipes from an
  * API if matches are found. Recipes can be added to favorites and stored in a database.
  */
 public class MainActivity extends Activity
@@ -46,13 +45,11 @@ public class MainActivity extends Activity
     private List<Integer> dietOptionsIds = new ArrayList<Integer>();
     private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
 
-
     @Override
     public void onDietOptionsSelected(List<Integer> dietOptionsIds, List<Integer> allergyOptionsIds) {
         this.dietOptionsIds = dietOptionsIds;
         this.allergyOptionsIds = allergyOptionsIds;
     }
-
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -121,7 +118,6 @@ public class MainActivity extends Activity
         }
     }
 
-
     private class DrawerToggle extends ActionBarDrawerToggle {
 
         DrawerToggle(Activity activity,
@@ -132,13 +128,11 @@ public class MainActivity extends Activity
 
         }
 
-
         @Override
         public void onDrawerClosed(View view) {
             super.onDrawerClosed(view);
             invalidateOptionsMenu();
         }
-
 
         @Override
         public void onDrawerOpened(View drawerView) {
@@ -172,15 +166,6 @@ public class MainActivity extends Activity
         drawerLayout.closeDrawer(drawerList);
     }
 
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        // If the drawer is open, hide action items related to the content view
-////        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
-////        menu.findItem(R.id.action_share).setVisible(!drawerOpen);
-//        return super.onPrepareOptionsMenu(menu);
-//    }
-
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -213,44 +198,17 @@ public class MainActivity extends Activity
         getActionBar().setTitle(paddedTitle);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        MenuItem menuItem = menu.findItem(R.id.action_share);
-//        shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-//        setIntent("This is example text");
         return super.onCreateOptionsMenu(menu);
     }
-
-//    private void setIntent(String text) {
-//        Intent intent = new Intent(Intent.ACTION_SEND);
-//        intent.setType("text/plain");
-//        intent.putExtra(Intent.EXTRA_TEXT, text);
-//        shareActionProvider.setShareIntent(intent);
-//    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
-            return true;
         }
-//        switch (item.getItemId()) {
-//            case R.id.action_create_order:
-//                //Code to run when the Create Order item is clicked
-//                //Intent intent = new Intent(this, OrderActivity.class);
-//                //startActivity(intent);
-//                return true;
-//            case R.id.action_settings:
-//                //Code to run when the settings item is clicked
-//                break;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
         return true;
     }
-
 
     public void onResultsClicked(View v) {
         String[] dietaryOptionsName = getResources().getStringArray(R.array.dietOptionsName);
@@ -321,7 +279,6 @@ public class MainActivity extends Activity
         }
     }
 
-
     private void setIngredients(String[] ingredients) {
         this.ingredients = ingredients;
     }
@@ -336,7 +293,6 @@ public class MainActivity extends Activity
         doFragTransaction(storeDealsFrag);
     }
 
-
     @Override
     public void onRecipeClicked(String recipeId) {
         Bundle toPass = new Bundle();
@@ -345,7 +301,6 @@ public class MainActivity extends Activity
         detailsFrag.setArguments(toPass);
         doFragTransaction(detailsFrag);
     }
-
 
     private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
