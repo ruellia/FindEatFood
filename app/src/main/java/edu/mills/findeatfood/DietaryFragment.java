@@ -12,11 +12,16 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Displays dietary restrictions in checkboxes. Checking a checkbox
+ * will add the dietary restriction to the recipe API call. Clicking the
+ * find recipe button will send the recipe API call and launch
+ * {@link ResultsFragment}
+ */
 public class DietaryFragment extends Fragment {
 
     private List<Integer> dietOptionsIds = new ArrayList<Integer>();
     private List<Integer> allergyOptionsIds = new ArrayList<Integer>();
-
     OnDietOptionsSelectedListener dietOptionsSelectedListener;
 
     @Override
