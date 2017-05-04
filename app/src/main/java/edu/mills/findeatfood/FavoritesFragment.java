@@ -1,15 +1,19 @@
 package edu.mills.findeatfood;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ListFragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,13 +26,27 @@ public class FavoritesFragment extends ListFragment {
     private List<String> recipeIds;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         recipes = new ArrayList<String>();
         recipeIds = new ArrayList<String>();
         new GetAllFavoriteRecipesTask().execute();
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
+    @Override
+    public void onViewCreated (View view, Bundle savedInstanceState) {
+        view.setBackgroundColor(getResources().getColor(android.R.color.black));
+        ListView listView = getListView();
+        listView.setDivider(new ColorDrawable(getResources().getColor(R.color.orange)));
+        listView.setDividerHeight(1);
+        int padding_in_dp = 15;  // 6 dps
+        final float scale = getResources().getDisplayMetrics().density;
+        int padding_in_px = (int) (padding_in_dp * scale + 0.5f);
+        listView.setPadding(padding_in_px,padding_in_px,padding_in_px,padding_in_px);
+    }
+
 
     @Override
     public void onAttach(Activity activity) {
