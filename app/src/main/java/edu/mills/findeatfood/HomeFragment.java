@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * Launch page showing image.
+ */
 public class HomeFragment extends Fragment {
 
     @Override

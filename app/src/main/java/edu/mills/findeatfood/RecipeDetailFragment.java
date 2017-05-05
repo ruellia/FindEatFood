@@ -25,7 +25,6 @@ import edu.mills.findeatfood.models.Recipe;
  * A checkbox is included that allows for the user to add and remove items from the database.
  * This checkbox serves the purpose of allowing for the user to 'favorite' recipes.
  */
-
 public class RecipeDetailFragment extends Fragment {
 
     private ProgressDialog progress;
