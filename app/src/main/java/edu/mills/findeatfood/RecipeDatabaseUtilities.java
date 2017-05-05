@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-
 /**
  * Provides an interface that connects to the database. Activities and fragments should
  * make calls here instead of trying to connect directly to the database.
@@ -18,10 +17,9 @@ public final class RecipeDatabaseUtilities {
 
     /**
      * Inserts the given recipe into the database by using the SQLiteRecipeOpenHelper.
-     * @param db Our SQLiteDatabase, where we will be inserting the recipe into.
-     * @param recipeName Name of the recipe.
-     * @param recipeId Id of the recipe.
-     * @return void
+     * @param db    Our SQLiteDatabase, where we will be inserting the recipe into.
+     * @param recipeName    Name of the recipe.
+     * @param recipeId  Id of the recipe.
      * It inserts the RECIPE_TABLE into the database with the values of the
      * name of the recipe and its id.
      */
@@ -36,8 +34,8 @@ public final class RecipeDatabaseUtilities {
 
     /**
      * Gets all of the recipes in the database by using SQLiteRecipeOpenHelper.
-     * @param db Our SQLiteDatabase, where we will be getting all of the recipes from.
-     * @return Cursor Queries through our database to get the table and all of the names
+     * @param db    Our SQLiteDatabase, where we will be getting all of the recipes from.
+     * @return  Queries through our database to get the table and all of the names
      * and ids of the recipes.
      */
     public static Cursor getAllRecipes(SQLiteDatabase db) {
@@ -54,9 +52,9 @@ public final class RecipeDatabaseUtilities {
     /**
      * Searches through the database for the given recipe in order to not insert duplicates.
      * Does this by querying through the database.
-     * @param db Our SQLiteDatabase.
-     * @param recipeId Id of the recipe.
-     * @return Boolean Returns true if the recipe is found in the database and
+     * @param db    Our SQLiteDatabase.
+     * @param recipeId  Id of the recipe.
+     * @return  Returns true if the recipe is found in the database and
      * returns false if the recipe is not found.
      */
     public static Boolean searchForRecipe(SQLiteDatabase db,
@@ -79,9 +77,8 @@ public final class RecipeDatabaseUtilities {
 
     /**
      * Deletes the given recipe from the database.
-     * @param db Our SQLiteDatabase.
-     * @param recipeId Id of the recipe.
-     * @return void Returns void.
+     * @param db    Our SQLiteDatabase.
+     * @param recipeId  Id of the recipe.
      */
     public static void deleteRecipe(SQLiteDatabase db,
                                     String recipeId) {
