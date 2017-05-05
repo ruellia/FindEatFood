@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * List of ingredients sent to API.
+ */
 public class IngredientsFragment extends Fragment {
 
     @Override
