@@ -23,8 +23,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Searches for recipes from an ingredient list and returns a list of recipes from an
- * API if matches are found. Recipes can be added to favorites and stored in a database.
+ * The top-level activity for the app FindEatFood. This activity is
+ * associated with the navigation drawer and its fragments, from which the user
+ * can search for recipes from an ingredient list. The app returns a list of
+ * recipes from an API if matches are found. The recipes can be added
+ * to favorites and stored in a database.
  */
 
 public class MainActivity extends Activity
@@ -37,27 +40,27 @@ public class MainActivity extends Activity
     private int currentPosition = 0;
     private String[] ingredients;
     /**
-     * Used for passing ingredients in bundle for recipe API call.
+     * Key associated with the String array of ingredients being put in the Bundle for the recipe API call.
      */
     static final String INGREDIENTS = "ingredients";
     /**
-     * Used for passing dietary restrictions in bundle for recipe API call.
+     * Key associated with the String ArrayList of diet restrictions being put in the Bundle for the recipe API call.
      */
     static final String DIET_RESTRICTIONS = "dietRestrictions";
     /**
-     * Used for passing allergy restrictions in bundle for recipe API call.
+     * Key associated with the String ArrayList of allergy restrictions being put in the Bundle for the recipe API call.
      */
     static final String ALLERGY_RESTRICTIONS = "allergyRestrictions";
     /**
-     *
+     * Key associated with the recipeId String being put in the Bundle for the recipe API call.
      */
     static final String RECIPE_ID = "recipeId";
     /**
-     *
+     * Tag associated with visible fragments.
      */
     static final String VISIBLE_FRAGMENT = "visible_fragment";
     /**
-     * Used to save the instance state.
+     * Key associated with int value being put in Bundle for preserving drawer state upon device rotation.
      */
     static final String POSITION = "position";
     private List<Integer> dietOptionsIds = new ArrayList<Integer>();
@@ -176,7 +179,6 @@ public class MainActivity extends Activity
     }
 
 
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -247,7 +249,7 @@ public class MainActivity extends Activity
                     (CheckBox) dietaryOptions.findViewById(dietOptionsIds.get(i));
             if (cb != null && cb.isChecked()) {
                 String cbName = cb.getText().toString();
-                String cbCode = (String) restrictionsHashMap.get(cbName);
+                String cbCode = restrictionsHashMap.get(cbName);
                 dietRestrictions.add(cbCode);
             }
         }
@@ -257,7 +259,7 @@ public class MainActivity extends Activity
                     (CheckBox) dietaryOptions.findViewById(allergyOptionsIds.get(j));
             if (cb != null && cb.isChecked()) {
                 String cbName = cb.getText().toString();
-                String cbCode = (String) restrictionsHashMap.get(cbName);
+                String cbCode = restrictionsHashMap.get(cbName);
                 allergyRestrictions.add(cbCode);
             }
         }
