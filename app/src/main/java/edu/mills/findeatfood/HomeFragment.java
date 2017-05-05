@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * Displays home screen.
+ */
 public class HomeFragment extends Fragment {
 
     @Override

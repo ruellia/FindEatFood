@@ -19,6 +19,9 @@ import java.util.List;
 import edu.mills.findeatfood.models.Matches;
 import edu.mills.findeatfood.models.SearchRecipes;
 
+/**
+ * Shows list of recipe results returned from the API
+ */
 public class ResultsFragment extends ListFragment {
 
     private ResultsListListener listener;
