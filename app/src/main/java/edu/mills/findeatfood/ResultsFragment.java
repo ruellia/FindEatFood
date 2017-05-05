@@ -20,7 +20,8 @@ import edu.mills.findeatfood.models.Matches;
 import edu.mills.findeatfood.models.SearchRecipes;
 
 /**
- * Shows list of recipe results returned from the API
+ * Shows list of recipe results returned from the API. Clicking the recipe will launch
+ * {@link RecipeDetailFragment}.
  */
 public class ResultsFragment extends ListFragment {
 
