@@ -7,7 +7,7 @@ import java.util.List;
 
 import edu.mills.findeatfood.models.Recipe;
 import edu.mills.findeatfood.models.SearchRecipes;
-import edu.mills.findeatfood.models.ValContainer;
+import edu.mills.findeatfood.ValContainer;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
