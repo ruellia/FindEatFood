@@ -23,10 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Searches for recipes from an ingredient list and returns a list of recipes from an
- * API if matches are found. Recipes can be added to favorites and stored in a database.
- */
 public class MainActivity extends Activity
         implements ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
 
@@ -72,6 +68,7 @@ public class MainActivity extends Activity
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            //call when item in the drawer is clicked
             selectItem(position);
         }
     }
@@ -118,7 +115,6 @@ public class MainActivity extends Activity
             if (fragment instanceof ResultsFragment) {
                 currentPosition = 1;
             }
-
             if (fragment instanceof FavoritesFragment) {
                 currentPosition = 2;
             }
@@ -141,12 +137,14 @@ public class MainActivity extends Activity
 
         }
 
+        // Called when a drawer has settled in a completely closed state
         @Override
         public void onDrawerClosed(View view) {
             super.onDrawerClosed(view);
             invalidateOptionsMenu();
         }
-        
+
+        // Called when a drawer has settled in a completely open state.
         @Override
         public void onDrawerOpened(View drawerView) {
             super.onDrawerOpened(drawerView);
@@ -181,9 +179,9 @@ public class MainActivity extends Activity
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
         drawerToggle.syncState();
     }
-
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -191,13 +189,11 @@ public class MainActivity extends Activity
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(POSITION, currentPosition);
     }
-
 
     private void setActionBarTitle(int position) {
         String title;
@@ -210,6 +206,7 @@ public class MainActivity extends Activity
         getActionBar().setTitle(paddedTitle);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
@@ -218,6 +215,7 @@ public class MainActivity extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
         }
         return true;
     }
@@ -307,6 +305,7 @@ public class MainActivity extends Activity
         doFragTransaction(detailsFrag);
     }
 
+    // helper function
     private void doFragTransaction(Fragment fragment) {
         FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
         fragTransaction.replace(R.id.content_frame, fragment, VISIBLE_FRAGMENT);
