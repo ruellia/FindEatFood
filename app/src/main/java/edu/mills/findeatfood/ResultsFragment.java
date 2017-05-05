@@ -32,6 +32,10 @@ public class ResultsFragment extends ListFragment {
     private ProgressDialog progress;
     private int startPosition;
 
+    /**
+     * Constructor for results fragment. This constructor uses
+     * setRetainInstance(true) to save the list of recipes upon device rotation.
+     */
     public ResultsFragment(){
         setRetainInstance(true);
     }
@@ -90,8 +94,8 @@ public class ResultsFragment extends ListFragment {
         protected void onPreExecute() {
             super.onPreExecute();
             progress = new ProgressDialog(getActivity());
-            progress.setMessage("Getting recipes.");
-            progress.setTitle("Loading...");
+            progress.setMessage(getString(R.string.getting_recipes));
+            progress.setTitle(R.string.loading);
             progress.setIndeterminate(false);
             progress.setCancelable(true);
             progress.show();

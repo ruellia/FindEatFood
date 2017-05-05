@@ -88,5 +88,6 @@
     <string name="rating">Rating:</string>
     <string name="directions_button">DIRECTIONS</string>
     <string name="error">must implement OnDietOptionsSelectedListener</string>
+    <string name="getting_recipes">Getting recipes.</string>
 
 </resources>
