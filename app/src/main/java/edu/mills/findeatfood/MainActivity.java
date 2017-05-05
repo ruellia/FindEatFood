@@ -214,13 +214,6 @@ public class MainActivity extends Activity
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item)) {
-        }
-        return true;
-    }
-
     public void onResultsClicked(View v) {
         String[] dietaryOptionsName = getResources().getStringArray(R.array.dietOptionsName);
         String[] dietaryOptionsCode = getResources().getStringArray(R.array.dietOptionsCode);
