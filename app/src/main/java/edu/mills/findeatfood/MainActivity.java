@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +26,7 @@ import java.util.List;
  * Searches for recipes from an ingredient list and returns a list of recipes from an
  * API if matches are found. Recipes can be added to favorites and stored in a database.
  */
+
 public class MainActivity extends Activity
         implements ResultsFragment.ResultsListListener, DietaryFragment.OnDietOptionsSelectedListener {
 
@@ -118,7 +118,6 @@ public class MainActivity extends Activity
             if (fragment instanceof ResultsFragment) {
                 currentPosition = 1;
             }
-
             if (fragment instanceof FavoritesFragment) {
                 currentPosition = 2;
             }
@@ -146,7 +145,7 @@ public class MainActivity extends Activity
             super.onDrawerClosed(view);
             invalidateOptionsMenu();
         }
-        
+
         @Override
         public void onDrawerOpened(View drawerView) {
             super.onDrawerOpened(drawerView);
@@ -184,20 +183,17 @@ public class MainActivity extends Activity
         drawerToggle.syncState();
     }
 
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(POSITION, currentPosition);
     }
-
 
     private void setActionBarTitle(int position) {
         String title;
@@ -209,6 +205,7 @@ public class MainActivity extends Activity
         String paddedTitle = "   " + title;
         getActionBar().setTitle(paddedTitle);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
