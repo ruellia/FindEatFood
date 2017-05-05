@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * List of ingredients sent to API.
+ * Displays an editText and button. Clicking the next button will parse the string from the
+ * editText into a string array, add the ingredients to the recipe API call, and launch
+ * {@link DietaryFragment}.
  */
 public class IngredientsFragment extends Fragment {
 
