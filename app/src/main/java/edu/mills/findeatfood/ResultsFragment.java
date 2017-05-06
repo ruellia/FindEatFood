@@ -85,6 +85,9 @@ public class ResultsFragment extends ListFragment {
         }
     }
 
+    /**
+     * Used for transferring a recipe's recipe ID into {@code MainActivity}.
+     */
     static interface ResultsListListener {
         void onRecipeClicked(String recipeId);
     }
