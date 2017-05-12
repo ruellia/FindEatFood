@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="edu.mills.findeatfood.IngredientsFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/cutting_board_port" />
+
+    <TextView
+        style="@style/header_style"
+        android:text="@string/your_ingredients" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        style="@style/edittext_style"
+        android:id="@+id/addIngredientET"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelPadding="2dp"
+        app:met_floatingLabelText="@string/add_ingredient"
+        app:met_floatingLabelTextColor="@color/orange"
+
+        app:met_floatingLabelTextSize="13sp"
+        app:met_primaryColor="@color/orange"
+        app:met_textColor="@color/white"
+        app:met_textColorHint="@color/smoked_white" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/dietaryActivityB"
+            style="@style/buttonStyle"
+            android:text="@string/next_button"
+            android:onClick="onDietaryClicked">
+        </Button>
+
+    </RelativeLayout>
+
+</RelativeLayout>
